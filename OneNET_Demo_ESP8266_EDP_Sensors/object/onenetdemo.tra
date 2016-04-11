@@ -49,7 +49,7 @@
 ### ADS-LD Output File: '..\object\onenetdemo.axf'
 ### ADS-LD Command File: '..\object\onenetdemo.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '..\object\onenetdemo.lnp', Handle=0x00000758
+### Creating CmdFile '..\object\onenetdemo.lnp', Handle=0x00000674
 ### Writing '.lnp' file
 ### ADS-LD Command file '..\object\onenetdemo.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

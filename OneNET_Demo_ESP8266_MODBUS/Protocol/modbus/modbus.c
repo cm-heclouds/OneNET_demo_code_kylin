@@ -63,7 +63,7 @@ void MODBUS_Loop(void)
     {
         /*查询WIFI是否接收到数据*/
         rcv_len = USART2_GetRcvNum();
-        USART2_GetRcvData(buffer, rcv_len);
+        //USART2_GetRcvData(buffer, rcv_len);
         mDelay(1000);
         mDelay(1000);
         if (rcv_len <= 0)
@@ -72,7 +72,9 @@ void MODBUS_Loop(void)
             continue;
         }
         else
-        {
+        {		mDelay(50);
+					  rcv_len = USART2_GetRcvNum();
+            USART2_GetRcvData(buffer, rcv_len);
             printf("\r\nI GET DATA:\r\n");
             for (i = 0; i < rcv_len; i++)
             {

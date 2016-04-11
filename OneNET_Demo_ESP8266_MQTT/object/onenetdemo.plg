@@ -4,12 +4,13 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 E:\workspace\workspace\DEMO\DEMO\OneNET_Demo_ESP8266_MQTT\Project\onenetdemo.uvproj
-Project File Date:  03/30/2016
+Project File Date:  04/08/2016
 
 <h2>Output:</h2>
 Build target 'OneNET_Demo_ESP8266_MQTT'
 compiling core_cm3.c...
 compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
 compiling main.c...
 compiling stm32f10x_it.c...
 ..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
@@ -100,5 +101,24 @@ compiling sht20.c...
 linking...
 Program Size: Code=25680 RO-data=2388 RW-data=72 ZI-data=2784  
 "..\object\onenetdemo.axf" - 0 Error(s), 53 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_MQTT'
+compiling main.c...
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(21): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(25): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(39): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+..\Network\esp8266\esp8266.c(43): warning:  #940-D: missing return statement at end of non-void function "ESP8266_SendData"
+linking...
+Program Size: Code=25696 RO-data=2388 RW-data=72 ZI-data=2784  
+"..\object\onenetdemo.axf" - 0 Error(s), 5 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
 Clean started: Project: 'onenetdemo'
    deleting intermediate output files for target 'OneNET_Demo_ESP8266_MQTT'

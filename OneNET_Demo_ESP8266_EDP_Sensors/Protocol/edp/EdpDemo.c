@@ -244,6 +244,8 @@ void Recv_Thread_Func(void)
             printf("%s %d No Data\n", __func__, __LINE__);
             break;
         }
+				mDelay(50);
+				rcv_len = USART2_GetRcvNum();
         USART2_GetRcvData(buffer, rcv_len);
         printf("recv from server, bytes: %d\r\n", rcv_len);
         /* wululu test print send bytes */

@@ -7,5 +7,28 @@ E:\workspace\workspace\DEMO\DEMO\OneNET_Demo_ESP8266_MODBUS\Project\onenetdemo.u
 Project File Date:  04/08/2016
 
 <h2>Output:</h2>
+Build target 'OneNET_Demo_ESP8266_MODBUS'
+linking...
+Program Size: Code=7506 RO-data=918 RW-data=52 ZI-data=1332  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Build target 'OneNET_Demo_ESP8266_MODBUS'
+compiling main.c...
+compiling modbus.c...
+..\Protocol\modbus\modbus.c(120): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\modbus\modbus.c(206): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(21): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(25): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(39): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+..\Network\esp8266\esp8266.c(43): warning:  #940-D: missing return statement at end of non-void function "ESP8266_SendData"
+linking...
+Program Size: Code=7522 RO-data=918 RW-data=52 ZI-data=1332  
+"..\object\onenetdemo.axf" - 0 Error(s), 7 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
 Clean started: Project: 'onenetdemo'
    deleting intermediate output files for target 'OneNET_Demo_ESP8266_MODBUS'
