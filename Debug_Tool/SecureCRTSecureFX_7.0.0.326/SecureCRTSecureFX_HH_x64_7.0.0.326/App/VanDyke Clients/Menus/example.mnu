@@ -1,0 +1,112 @@
+//*** This file will be overwritten when SecureCRT is upgraded.           ***
+//*** If you wish to modify the file, please make your changes in a copy. ***
+
+
+// accelerator table
+ACCELERATOR
+	"session1", "S", "VIRTKEY | CTRL | SHIFT"
+	"session2", "L", "VIRTKEY | CTRL | SHIFT"
+	"session3", "W", "VIRTKEY | CTRL | SHIFT"
+END
+
+// stringtable for status bar and tooltips
+STRINGTABLE
+	"session1",  "Connect to session one\nsession one"
+	"session2",  "Connect to session two\nsession two"
+	"session3",  "Connect to session three\nsession three"
+	"script", "Run my vbs script\ntest.vbs"
+	"hello", "Send 'Hello World'\nHello World" 
+END
+
+// main menu
+MENU  "[main]"
+	POPUPMENU "&File"
+		MENUITEM "&Connect...", "MENU_CONNECT"
+		MENUITEM "New &Tab...", "MENU_TAB_NEW"
+		MENUITEM "New &SFTP Tab", "MENU_TAB_NEW_SFTP"
+		MENUITEM "&Quick Connect...", "MENU_QUICK_CONNECT"
+		MENUITEM "&Disconnect", "MENU_DISCONNECT"
+		MENUITEM "&Reconnect", "MENU_RECONNECT"
+		SEPARATOR
+		POPUPMENU "&Printing"
+			MENUITEM "&Auto Print ", "MENU_PRINT_AUTO"
+			MENUITEM "&Screen", "MENU_PRINT_SCREEN"
+			MENUITEM "Se&lection", "MENU_PRINT_SELECTION"
+			MENUITEM "&Eject page", "MENU_PRINT_EJECT_PAGE"
+			MENUITEM "&Cancel", "MENU_PRINT_CANCEL"
+		END
+		MENUITEM "Print Set&up...", "MENU_PRINT_SETUP"
+		SEPARATOR
+		MENUITEM "&Log Session", "MENU_LOG_SESSION"
+		MENUITEM "&Raw Log Session", "MENU_DEBUG_LOG"
+		MENUITEM "&Trace Options", "MENU_TRACE_OPTIONS"
+		SEPARATOR
+		MENUITEM "Most Recent", "MENU_MRU_FILE1"
+		SEPARATOR
+		MENUITEM "&Load Default", "TOOLS_LOAD_DEFAULT_MAIN_MENU"
+		MENUITEM "E&xit", "MENU_EXIT"
+	END
+
+	// this is a stand alone menu item that has no submenus
+	MENUITEM "&Load Default", "TOOLS_LOAD_DEFAULT_MAIN_MENU"
+
+	POPUPMENU "&Options"
+		MENUITEM "&Session Options...", "MENU_SESSION_OPTIONS"
+		MENUITEM "&Global Options...", "MENU_GLOBAL_OPTIONS"
+		SEPARATOR
+		MENUITEM "&Auto Save Options", "MENU_AUTO_SAVE"
+		MENUITEM "Save Settings &Now", "MENU_SAVE_NOW"
+	END
+
+	POPUPMENU "&User Defined"
+		MENUITEM "Session &1", "OPEN_SESSION", "session1|/POS 100 100", "session1","session1"
+		MENUITEM "Session &2", "OPEN_SESSION", "session2", "session2","session2"
+		MENUITEM "Session &3", "OPEN_SESSION", "session3", "session3","session3"
+		MENUITEM "S&end String", "SEND", "Hello World\n", "hello"
+	END
+
+	POPUPMENU "Too&ls"
+		MENUITEM "&Keymap Editor...", "TOOLS_MENU_KEYMAP_EDITOR"
+	END	
+END
+
+POPUPMENU "[context]"
+   	MENUITEM "Session &1", "OPEN_SESSION", "session1|/POS 100 100", "session1","session1"
+	MENUITEM "Session &2", "OPEN_SESSION", "session2", "session2","session2"
+	MENUITEM "Session &3", "OPEN_SESSION", "session3", "session3","session3"
+	MENUITEM "S&end String", "SEND", "Hello World\n", "hello"
+END	
+
+POPUPMENU "[system]"
+	MENUITEM "&Connect", "MENU_CONNECT"
+	SEPARATOR
+	MENUITEM "&Restore", "SYS_MENU_RESTORE"
+	MENUITEM "&Move", "SYS_MENU_MOVE"
+	MENUITEM "&Size", "SYS_MENU_SIZE"
+	MENUITEM "Mi&nimize", "SYS_MENU_MINIMIZE"
+	MENUITEM "Ma&ximize", "SYS_MENU_MAXIMIZE"
+	MENUITEM "&Close", "SYS_MENU_CLOSE"
+	SEPARATOR
+	MENUITEM "&Load Default", "TOOLS_LOAD_DEFAULT_SYS_MENU"
+	SEPARATOR
+	POPUPMENU "&Sessions"
+		MENUITEM "Session &1", "OPEN_SESSION", "session1|/POS 100 100", "session1","session1"
+		MENUITEM "Session &2", "OPEN_SESSION", "session2", "session2","session2"
+		MENUITEM "Session &3", "OPEN_SESSION", "session3", "session3","session3"
+	END
+END
+
+// the toolbar
+// Note:  the Connect, Quick Connect, and Help buttons use the built-in icon
+TOOLBAR  "[toolbar]"
+	TOOLBARITEM  "MENU_CONNECT", "MENU_CONNECT"
+	TOOLBARITEM  "MENU_QUICK_CONNECT", "MENU_QUICK_CONNECT"
+	TOOLBARITEM  "MENU_TAB_NEW", "MENU_TAB_NEW"
+	SEPARATOR
+	TOOLBARITEM "session1.bmp", "OPEN_SESSION", "session1|/POS 100 100", "session1", "session1"
+	TOOLBARITEM "session2.bmp", "OPEN_SESSION", "session2", "session2", "session2"
+	TOOLBARITEM "session3.bmp", "OPEN_SESSION", "session3", "session3", "session3"
+	TOOLBARITEM "send.bmp" ,"SEND", "Hello World\n"
+	SEPARATOR
+	TOOLBARITEM  "MENU_HELP_FINDER", "MENU_HELP_FINDER"
+END

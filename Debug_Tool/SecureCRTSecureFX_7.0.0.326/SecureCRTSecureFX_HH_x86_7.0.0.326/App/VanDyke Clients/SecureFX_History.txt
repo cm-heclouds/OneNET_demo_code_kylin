@@ -1,0 +1,140 @@
+
+              SecureFX(R) 7.0 (Official) -- July 3, 2012
+
+            Copyright (C) 1995-2012 VanDyke Software, Inc.
+                       All rights reserved.
+
+
+This file contains a SecureFX product history.  It includes lists of
+new features, changes, and bug fixes sorted by release.  For a product
+description, installation notes, registration information, and contact
+information, please refer to Readme.txt (downloaded with this 
+installation).
+
+
+Changes in SecureFX 7.0 (Official) -- July 3, 2012
+--------------------------------------------------
+
+No changes.
+
+
+Changes in SecureFX 7.0 (Beta 4) -- June 19, 2012
+-------------------------------------------------
+
+Bug fixes:
+
+  - SecureFX crashed when attempting to access a symbolic link.
+
+
+Changes in SecureFX 7.0 (Beta 3) -- June 5, 2012
+------------------------------------------------
+
+Bug fixes:
+
+  - When the SecureFX window was resized, it flickered.
+
+
+Changes in SecureFX 7.0 (Beta 2) -- May 22, 2012
+------------------------------------------------
+
+Changes:
+
+  - When the Date column is selected in a local or remote session
+    window, the sort order is now descending instead of ascending.
+
+Bug fixes:
+
+  - SFXCL: When files were transferred using the /Move option, no error
+    was reported if a source file could not be deleted.
+
+
+Changes in SecureFX 7.0 (Beta 1) -- May 3, 2012
+-----------------------------------------------
+
+New features:
+
+  - Added a filter control that supports wildcards to the session
+    toolbar, which makes it easier to find specific folders and files in
+    local and remote sessions.
+  - After a synchronize operation, the synchronize file list is
+    automatically refreshed when changes are made to files on the local
+    system, which allows files to be re-synchronized without having to
+    close the synchronize tab.
+  - A refresh button was added to the synchronize view, which allows
+    files to be re-synchronized after the initial synchronization.
+  - Bookmarks can be opened directly from the right-click menu in local
+    and remote sessions and from the "File" menu.
+  - Added a global option to position the local window at the bottom
+    or right when SecureFX is tabbed horizontally or vertically.
+  - SFXCL: Added the ability to specify explicit FTPS on the command
+    line as "ftpes://".
+  - SSH2: Added the ability to skip authentication methods while
+    authenticating.
+
+Changes:
+
+  - Improved the performance of synchronization operations involving a
+    large number of files.
+  - SecureFX will continue connecting when either of the initial PBSZ
+    or PROT commands fails, in compliance with Note 1 in section 12.1
+    of RFC 4217.
+  - In the Synchronize view, the information in the "Last Action" column
+    for transfers was changed to specify whether the transfer was an
+    upload or download.
+  - The synchronize view columns were modified so that the current
+    status and last action are shown.
+  - It is no longer possible to add duplicate bookmarks.
+  - The "Open Bookmarks" dialog was renamed "Manage Bookmarks".
+  - FTPS: SecureFX now logs server-to-server file transfer failures.
+  - SFXCL: Added a command-line option "/Chmod", which provides the
+    ability to change permissions of remote files.
+  - SFXCL: SFXCL returns the error code for file not found if a wildcard
+    is specified and there are no matches.
+
+Bug fixes:
+
+  - After browsing to a folder with a large number of files (> 35,000)
+    and then cancelling the listing, SecureFX could crash.
+  - Synchronization operations that accessed UNC shares failed on
+    Windows Server 2008 R2.
+  - Double-clicking a local file resulted in an error if the file type
+    was associated with an editor such as EmEditor.
+  - It was not possible to navigate to a remote folder where the group
+    name contained a space.
+  - If values for "Remote ListView State" were garbage, it caused the
+    columns in the "Details" view to be displayed incorrectly.
+  - If a transfer that caused the choose transfer type and overwrite
+    prompts to be displayed was started and the network disconnected
+    while the first prompt was displayed and then the session
+    reconnected, the second prompt was not displayed and the file was
+    overwritten.
+  - The "Quick Connect" dialog sometimes used the default username or
+    previously used username even though the username was empty.
+  - Double-clicking a bookmark in the "Open Bookmark" dialog did not
+    open the bookmark.
+  - The DELETE key could not be used to delete a bookmark in the "Open
+    Bookmarks" dialog.
+  - If more than one instance of SecureFX was running, changes made
+    through the "View" menu were not propagated to the other instance(s).
+  - SecureFX created a registry structure for configuration
+    information when the configuration folder was specified on the
+    command line using "/F".
+  - FTP/FTPS: SecureFX file transfer operations stalled if a 526 error
+    was received from the remote system.
+  - FTP: While attempting to connect to an FTP server using an HTTP
+    proxy and PASV data connections, if SecureFX was unable to obtain
+    the peer address from the control connection, it crashed.
+  - FTP: When an FTP session connected to 127.0.0.1, the machine's
+    actual IP address was used for the PORT command instead of
+    127.0.0.1.
+  - SSH2: Authentication failed when the server requested the keyboard-
+    interactive method more than once.
+  - SFXCL: On servers that stored timestamps in seconds rather than
+    milliseconds, when the "Overwrite older" flag was specified,
+    identical files were uploaded again.
+  - Windows: With tabs off, when a local or remote window was
+    minimized and then selected from the Windows 7 task bar, the
+    restored window was not painted correctly.
+  - Windows: In the Chinese version of Windows XP and Vista, the font
+    used for the title bar, menu, and status bar was smaller than the
+    system font.

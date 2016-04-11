@@ -1,0 +1,193 @@
+//*** This file will be overwritten when SecureCRT is upgraded.           ***
+//*** If you wish to modify the file, please make your changes in a copy. ***
+
+
+// accelerator table
+ACCELERATOR
+	"Connect", "C", "VIRTKEY | ALT"
+	"New Tab", "B", "VIRTKEY | ALT"
+	"New SFTP Tab", "P", "VIRTKEY | ALT"
+	"Quick", "Q", "VIRTKEY | ALT"
+END
+
+// stringtable for status bar and tooltips
+STRINGTABLE
+	"Connect",  "Connect to a remote host in a new window\nConnect"
+	"New Tab",  "Connect to a remote host in a new tab\nNew Tab"
+	"New SFTP Tab",  "Open new SFTP tab to current host\nSFTP"
+	"Quick",  "Quick connect\nQuick Connect"
+END
+
+// main menu
+MENU  "[main]"
+	POPUPMENU "&File"
+		MENUITEM "&Connect...", "MENU_CONNECT",   ,"Connect" , "Connect"
+		MENUITEM "New &Tab...", "MENU_TAB_NEW",   ,"New Tab" , "New Tab"
+		MENUITEM "New &SFTP Tab", "MENU_TAB_NEW_SFTP",   ,"New SFTP Tab" , "New SFTP Tab"
+		MENUITEM "&Quick Connect...", "MENU_QUICK_CONNECT",   ,"Quick", "Quick"
+		MENUITEM "&Disconnect", "MENU_DISCONNECT"
+		MENUITEM "&Reconnect", "MENU_RECONNECT"
+		SEPARATOR
+		MENUITEM "E&xit", "MENU_EXIT"
+	END
+END
+
+POPUPMENU "[context]"
+	MENUITEM "&Copy", "MENU_COPY"
+	MENUITEM "&Paste", "MENU_PASTE"
+	MENUITEM "C&opy and Paste", "MENU_COPY_PASTE"
+	MENUITEM "Paste as &Quotation",  "MENU_EDIT_PASTE_AS_QUOTATION"
+	SEPARATOR
+	MENUITEM "&Open URL", "MENU_OPEN_URL"
+	SEPARATOR
+	MENUITEM "&Find...",  "MENU_FIND"
+	MENUITEM "Select &All", "MENU_SELECT_ALL"
+	MENUITEM "Print Se&lection", "MENU_PRINT_SELECTION"
+	SEPARATOR
+	MENUITEM "Clear Scroll&back", "MENU_CLEAR_SCROLLBACK"
+	MENUITEM "Clear &Screen", "MENU_CLEAR_SCREEN"
+	MENUITEM "Clear Screen and Scrollbac&k", "MENU_CLEAR_SCREEN_AND_SCROLLBACK"
+END	
+
+POPUPMENU "[system]"
+	MENUITEM "&Restore", "SYS_MENU_RESTORE"
+	MENUITEM "&Move", "SYS_MENU_MOVE"
+	MENUITEM "&Size", "SYS_MENU_SIZE"
+	MENUITEM "Mi&nimize", "SYS_MENU_MINIMIZE"
+	MENUITEM "Ma&ximize", "SYS_MENU_MAXIMIZE"
+	SEPARATOR
+	MENUITEM "&Toggle Menu Bar", "MENU_TOGGLE_MENU_BAR"
+	MENUITEM "&Always on Top", "MENU_ALWAYS_ON_TOP"
+	MENUITEM "Save Settings No&w", "MENU_SAVE_NOW"
+	SEPARATOR
+	MENUITEM "&Close", "SYS_MENU_CLOSE"
+	SEPARATOR
+	POPUPMENU "Main Menu"
+		POPUPMENU "&File"
+			MENUITEM "&Connect", "MENU_CONNECT",   ,"Connect" , "Connect"
+			MENUITEM "New &Tab...", "MENU_TAB_NEW",   ,"New Tab" , "New Tab"
+			MENUITEM "New &SFTP Tab", "MENU_TAB_NEW_SFTP",   ,"New SFTP Tab" , "New SFTP Tab"
+			MENUITEM "&Quick Connect...", "MENU_QUICK_CONNECT",   ,"Quick", "Quick"
+			MENUITEM "&Disconnect", "MENU_DISCONNECT"
+			MENUITEM "&Reconnect", "MENU_RECONNECT"
+			SEPARATOR
+			POPUPMENU "&Printing"
+				MENUITEM "&Auto Print ", "MENU_PRINT_AUTO"
+				MENUITEM "&Screen", "MENU_PRINT_SCREEN"
+				MENUITEM "Se&lection", "MENU_PRINT_SELECTION"
+				MENUITEM "&Eject page", "MENU_PRINT_EJECT_PAGE"
+				MENUITEM "&Cancel", "MENU_PRINT_CANCEL"
+			END
+			MENUITEM "Print Set&up...", "MENU_PRINT_SETUP"
+			SEPARATOR
+			MENUITEM "&Log Session", "MENU_LOG_SESSION"
+			MENUITEM "&Raw Log Session", "MENU_DEBUG_LOG"
+			MENUITEM "&Trace Options", "MENU_TRACE_OPTIONS"
+			SEPARATOR
+			MENUITEM "Most Recent", "MENU_MRU_FILE1"
+			SEPARATOR
+			MENUITEM "E&xit", "MENU_EXIT"
+		END
+
+		POPUPMENU "&Edit"
+			MENUITEM "&Copy", "MENU_COPY"
+			MENUITEM "&Paste", "MENU_PASTE"
+			MENUITEM "C&opy and Paste", "MENU_COPY_PASTE"
+			MENUITEM "Paste as &Quotation", "MENU_EDIT_PASTE_AS_QUOTATION"
+			MENUITEM "Select &All", "MENU_SELECT_ALL"
+			MENUITEM "&Find...", "MENU_FIND"
+			SEPARATOR
+			MENUITEM "Print Se&lection", "MENU_PRINT_SELECTION"
+			SEPARATOR	
+			MENUITEM "Clear Scroll&back", "MENU_CLEAR_SCROLLBACK"
+			MENUITEM "Clear &Screen", "MENU_CLEAR_SCREEN"
+			MENUITEM "Clear Screen and Scrollbac&k", "MENU_CLEAR_SCREEN_AND_SCROLLBACK"
+			SEPARATOR
+			MENUITEM "&Reset", "MENU_RESET"
+		END
+    
+		POPUPMENU "&View"
+			MENUITEM "&Menu Bar", "MENU_TOGGLE_MENU_BAR"
+			MENUITEM "&Toolbar", "MENU_TOGGLE_TOOLBAR"
+			MENUITEM "&Chat Window", "MENU_TOGGLE_CHAT_WINDOW"
+			MENUITEM "&Status Bar", "MENU_TOGGLE_STATUS_BAR"
+			SEPARATOR
+			MENUITEM "&Horizontal Scroll Bar", "MENU_TOGGLE_HORZ_SCROLLBAR"
+			MENUITEM "&Vertical Scroll Bar", "MENU_TOGGLE_VERT_SCROLLBAR"
+			SEPARATOR
+			MENUITEM "&Always on Top", "MENU_ALWAYS_ON_TOP"
+			MENUITEM "&Full Screen", "MENU_TOGGLE_FULL_SCREEN"
+		END
+		
+		POPUPMENU "&Options"
+			MENUITEM "&Session Options...", "MENU_SESSION_OPTIONS"
+			MENUITEM "&Global Options...", "MENU_GLOBAL_OPTIONS"
+			SEPARATOR
+			MENUITEM "&Auto Save Options", "MENU_AUTO_SAVE"
+			MENUITEM "Save Settings &Now", "MENU_SAVE_NOW"
+		END
+
+		POPUPMENU "&Transfer"
+			MENUITEM "&Send ASCII...", "MENU_SEND_ASCII"
+			MENUITEM "&Receive ASCII...", "MENU_RECEIVE_ASCII"
+			SEPARATOR
+			MENUITEM "Se&nd Xmodem...", "MENU_SEND_XMODEM"
+			MENUITEM "Re&ceive Xmodem...", "MENU_RECEIVE_XMODEM"
+			SEPARATOR
+			MENUITEM "&Zmodem Upload List...", "MENU_ZMODEM_ADD_FILE"
+			MENUITEM "Start Zmodem &Upload", "MENU_SEND_ZMODEM"
+		END		
+
+		POPUPMENU "&Script"
+			MENUITEM "&Run...", "MENU_SCRIPT_RUN"
+			MENUITEM "&Cancel", "MENU_SCRIPT_CANCEL"
+			SEPARATOR
+			MENUITEM "Recent Script", "MENU_SCRIPT_MRU_FILE1"
+		END		
+
+		POPUPMENU "Too&ls"
+			MENUITEM "&Keymap Editor...", "TOOLS_MENU_KEYMAP_EDITOR"
+			SEPARATOR
+			MENUITEM "&Create Public Key...", "TOOLS_CREATE_PUBLIC_KEY"
+			MENUITEM "&Public-Key Assistant...", "TOOLS_PUBLIC_KEY_ASSISTANT"
+		END
+		
+		POPUPMENU "&Help"
+			MENUITEM "&Help Topics", "MENU_HELP_FINDER"
+			SEPARATOR
+			MENUITEM "SecureCRT &Web Page...", "MENU_HELP_WEBPAGE"
+			MENUITEM "&Order SecureCRT...", "MENU_HELP_ORDER"
+			MENUITEM "Check for &Updates...", "MENU_HELP_UPDATE"
+			SEPARATOR
+			MENUITEM "&Enter License Data...", "MENU_ENTER_LICENSE_DATA"
+			SEPARATOR
+			MENUITEM "&About SecureCRT...", "MENU_APP_ABOUT"
+		END			
+
+	END
+END
+
+// the toolbar
+TOOLBAR  "[toolbar]"
+	TOOLBARITEM "MENU_CONNECT", "MENU_CONNECT",  , "Connect", "Connect"
+	TOOLBARITEM "MENU_QUICK_CONNECT", "MENU_QUICK_CONNECT", , "Quick", "Quick"
+	TOOLBARITEM "MENU_TAB_NEW", "MENU_TAB_NEW", , "New Tab", "New Tab"
+	TOOLBARITEM "MENU_DISCONNECT", "MENU_DISCONNECT"
+	TOOLBARITEM "MENU_RECONNECT", "MENU_RECONNECT"
+	SEPARATOR
+	TOOLBARITEM "MENU_COPY", "MENU_COPY"
+	TOOLBARITEM "MENU_PASTE", "MENU_PASTE"
+	TOOLBARITEM "MENU_FIND", "MENU_FIND"
+	SEPARATOR
+	TOOLBARITEM "MENU_PRINT_SCREEN", "MENU_PRINT_SCREEN"
+	TOOLBARITEM "MENU_PRINT_SELECTION", "MENU_PRINT_SELECTION"
+	TOOLBARITEM "MENU_PRINT_AUTO", "MENU_PRINT_AUTO"
+	SEPARATOR
+	TOOLBARITEM "MENU_SESSION_OPTIONS", "MENU_SESSION_OPTIONS"
+	TOOLBARITEM "TOOLS_MENU_KEYMAP_EDITOR", "TOOLS_MENU_KEYMAP_EDITOR"
+	TOOLBARITEM "TOOLS_PUBLIC_KEY_ASSISTANT", "TOOLS_PUBLIC_KEY_ASSISTANT"
+	SEPARATOR
+	TOOLBARITEM "MENU_HELP_FINDER", "MENU_HELP_FINDER"
+	SEPARATOR
+	TOOLBARITEM "TOOLBAR_LAUNCH_SECUREFX", "TOOLBAR_LAUNCH_SECUREFX"
+END
