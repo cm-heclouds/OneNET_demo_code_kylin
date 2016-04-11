@@ -1,0 +1,9 @@
+..\object\cjson.o: ..\Utils\cJSON.c
+..\object\cjson.o: C:\Keil\ARM\RV31\Inc\string.h
+..\object\cjson.o: C:\Keil\ARM\RV31\Inc\stdio.h
+..\object\cjson.o: C:\Keil\ARM\RV31\Inc\math.h
+..\object\cjson.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+..\object\cjson.o: C:\Keil\ARM\RV31\Inc\float.h
+..\object\cjson.o: C:\Keil\ARM\RV31\Inc\limits.h
+..\object\cjson.o: C:\Keil\ARM\RV31\Inc\ctype.h
+..\object\cjson.o: ..\Utils\cJSON.h

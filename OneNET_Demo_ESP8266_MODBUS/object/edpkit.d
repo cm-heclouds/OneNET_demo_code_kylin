@@ -1,0 +1,9 @@
+..\object\edpkit.o: ..\Protocol\edp\EdpKit.c
+..\object\edpkit.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+..\object\edpkit.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\object\edpkit.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\object\edpkit.o: C:\Keil\ARM\ARMCC\bin\..\include\time.h
+..\object\edpkit.o: ..\Protocol\edp\EdpKit.h
+..\object\edpkit.o: ..\Protocol\edp\Common.h
+..\object\edpkit.o: ..\Utils\cJSON.h
+..\object\edpkit.o: C:\Keil\ARM\ARMCC\bin\..\include\assert.h

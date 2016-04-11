@@ -1,0 +1,11 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\workspace\workspace\DEMO\DEMO\OneNET_Demo_ESP8266_MODBUS\Project\onenetdemo.uvproj
+Project File Date:  04/08/2016
+
+<h2>Output:</h2>
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_MODBUS'

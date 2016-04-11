@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\xufang\Desktop\Demo资料\实验代码\OneNET_Demo_ESP8266_EDP_Led\OneNET_Demo_ESP8266_EDP_Led\Project\onenetdemo.uvproj
+Project File Date:  04/08/2016
+
+<h2>Output:</h2>
+Build target 'OneNET_Demo_ESP8266_EDP_LED'
+compiling esp8266.c...
+..\EDP\edpkit.h(111): warning:  #1295-D: Deprecated declaration NewBuffer - give arg types
+..\Network\esp8266.c(84): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(87): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+..\Network\esp8266.c(92): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(113): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(124): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+..\Network\esp8266.c(128): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(148): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(156): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(161): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(166): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(171): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(176): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(199): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+..\Network\esp8266.c(210): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+..\Network\esp8266.c(214): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+linking...
+Program Size: Code=28886 RO-data=658 RW-data=96 ZI-data=4096  
+"..\object\onenetdemo.axf" - 0 Error(s), 16 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...

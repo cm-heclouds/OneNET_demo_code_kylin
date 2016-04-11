@@ -1,0 +1,24 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\onenet\STM32F103\STM32f103-DEMO\buttonandcmd\OneNet_Demo_Emw3081_Edp_bin - 1\Project\onenetdemo.uvproj
+Project File Date:  04/07/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: Code=5928 RO-data=440 RW-data=6192 ZI-data=2048  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'OneNET_Demo_EMW3081_EDP_BIN'
+compiling main.c...
+..\User\main.c(54): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+linking...
+Program Size: Code=5928 RO-data=440 RW-data=6192 ZI-data=2048  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).

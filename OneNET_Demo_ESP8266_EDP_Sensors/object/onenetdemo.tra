@@ -1,0 +1,58 @@
+*** Creating Trace Output File '..\object\onenetdemo.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"..\object\core_cm3.o"'
+### List of Objects: adding '"..\object\system_stm32f10x.o"'
+### List of Objects: adding '"..\object\startup_stm32f10x_hd.o"'
+### List of Objects: adding '"..\object\main.o"'
+### List of Objects: adding '"..\object\stm32f10x_it.o"'
+### List of Objects: adding '"..\object\misc.o"'
+### List of Objects: adding '"..\object\stm32f10x_adc.o"'
+### List of Objects: adding '"..\object\stm32f10x_bkp.o"'
+### List of Objects: adding '"..\object\stm32f10x_can.o"'
+### List of Objects: adding '"..\object\stm32f10x_cec.o"'
+### List of Objects: adding '"..\object\stm32f10x_crc.o"'
+### List of Objects: adding '"..\object\stm32f10x_dac.o"'
+### List of Objects: adding '"..\object\stm32f10x_dbgmcu.o"'
+### List of Objects: adding '"..\object\stm32f10x_dma.o"'
+### List of Objects: adding '"..\object\stm32f10x_exti.o"'
+### List of Objects: adding '"..\object\stm32f10x_flash.o"'
+### List of Objects: adding '"..\object\stm32f10x_fsmc.o"'
+### List of Objects: adding '"..\object\stm32f10x_gpio.o"'
+### List of Objects: adding '"..\object\stm32f10x_i2c.o"'
+### List of Objects: adding '"..\object\stm32f10x_iwdg.o"'
+### List of Objects: adding '"..\object\stm32f10x_pwr.o"'
+### List of Objects: adding '"..\object\stm32f10x_rcc.o"'
+### List of Objects: adding '"..\object\stm32f10x_rtc.o"'
+### List of Objects: adding '"..\object\stm32f10x_sdio.o"'
+### List of Objects: adding '"..\object\stm32f10x_spi.o"'
+### List of Objects: adding '"..\object\stm32f10x_tim.o"'
+### List of Objects: adding '"..\object\stm32f10x_usart.o"'
+### List of Objects: adding '"..\object\stm32f10x_wwdg.o"'
+### List of Objects: adding '"..\object\hal_i2c.o"'
+### List of Objects: adding '"..\object\sht20.o"'
+### List of Objects: adding '"..\object\adxl345.o"'
+### List of Objects: adding '"..\object\bh1750fvi.o"'
+### List of Objects: adding '"..\object\hmc5883l.o"'
+### List of Objects: adding '"..\object\usart1.o"'
+### List of Objects: adding '"..\object\usart2.o"'
+### List of Objects: adding '"..\object\edpdemo.o"'
+### List of Objects: adding '"..\object\edpkit.o"'
+### List of Objects: adding '"..\object\cjson.o"'
+### List of Objects: adding '"..\object\utils.o"'
+### List of Objects: adding '"..\object\esp8266.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "..\object\core_cm3.o" "..\object\system_stm32f10x.o" "..\object\startup_stm32f10x_hd.o" "..\object\main.o" "..\object\stm32f10x_it.o" "..\object\misc.o" "..\object\stm32f10x_adc.o" "..\object\stm32f10x_bkp.o" "..\object\stm32f10x_can.o" "..\object\stm32f10x_cec.o" "..\object\stm32f10x_crc.o" "..\object\stm32f10x_dac.o" "..\object\stm32f10x_dbgmcu.o" "..\object\stm32f10x_dma.o" "..\object\stm32f10x_exti.o" "..\object\stm32f10x_flash.o" "..\object\stm32f10x_fsmc.o" "..\object\stm32f10x_gpio.o" "..\object\stm32f10x_i2c.o" "..\object\stm32f10x_iwdg.o" "..\object\stm32f10x_pwr.o" "..\object\stm32f10x_rcc.o" "..\object\stm32f10x_rtc.o" "..\object\stm32f10x_sdio.o" "..\object\stm32f10x_spi.o" "..\object\stm32f10x_tim.o" "..\object\stm32f10x_usart.o" "..\object\stm32f10x_wwdg.o" "..\object\hal_i2c.o" "..\object\sht20.o" "..\object\adxl345.o" "..\object\bh1750fvi.o" "..\object\hmc5883l.o" "..\object\usart1.o" "..\object\usart2.o" "..\object\edpdemo.o" "..\object\edpkit.o" "..\object\cjson.o" "..\object\utils.o" "..\object\esp8266.o" --library_type=microlib --strict --scatter "..\object\onenetdemo.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\onenetdemo.map" -o ..\object\onenetdemo.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '..\object\onenetdemo.axf'
+### ADS-LD Command File: '..\object\onenetdemo.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '..\object\onenetdemo.lnp', Handle=0x00000758
+### Writing '.lnp' file
+### ADS-LD Command file '..\object\onenetdemo.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
