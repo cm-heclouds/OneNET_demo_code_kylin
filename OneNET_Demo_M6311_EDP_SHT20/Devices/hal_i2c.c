@@ -3,7 +3,7 @@
 #include "utils.h"
 #include <stdio.h>
 
-#define I2C_Speed              100000
+#define I2C_Speed              200000
 #define I2C_SLAVE_ADDRESS7    0
 
 void GPIO_I2C_Configuration(I2C_TypeDef* I2Cx);
