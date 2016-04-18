@@ -6,7 +6,7 @@ void mDelay(uint32_t i)
 		uint32_t j=0;
 		for(;i>0;i--)
 		{
-				for(j=0;j<25000;j++);
+				for(j=0;j<12000;j++);
 		}
 }
 

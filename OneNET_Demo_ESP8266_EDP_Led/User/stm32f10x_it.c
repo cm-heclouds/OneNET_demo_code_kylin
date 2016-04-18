@@ -23,8 +23,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include "main.h"
-
+#include "usart1.h"
+#include "usart2.h"
 
 
 extern uint32_t SystickTime;
@@ -198,60 +198,22 @@ void USART2_IRQHandler(void)
     }
 		else if(USART2->SR & USART_FLAG_RXNE)   //Receive Data Reg Full Flag
     {		
-        data = USART2->DR;		
+        data = USART2->DR;
 				usart2_rcv_buf[usart2_rcv_len++]=data;
-				if(usart2_rcv_len>=MAX_RCV_LEN-1)
-				{
-						usart2_rcv_len=0;
-						memset(usart2_rcv_buf,0,MAX_RCV_LEN);
-				}
 				
-				if((data=='+')&&(rcv_cmd_flag==0))
+				if(data=='{') //约定平台下发的控制命令以'{'为开始符，‘}’为控制命令结束符，读者可以自定义自己的开始符合结束符
 				{
 						rcv_cmd_start=1;
 				}
-				
 				if(rcv_cmd_start==1)
 				{
-						usart2_cmd_buf[usart2_cmd_len++]=data;		
-						if(usart2_cmd_len>=MAX_CMD_LEN-1)
-						{
-								usart2_cmd_len=0;
-								memset(usart2_cmd_buf,0,MAX_CMD_LEN);
-								rcv_cmd_start=0;
-						}
-						
-						if(usart2_cmd_len==4)
-						{
-								if((NULL == strstr(usart2_cmd_buf,"+IPD")))
-								{
-										usart2_cmd_len=0;
-										memset(usart2_cmd_buf,0,MAX_CMD_LEN);
-										rcv_cmd_start=0;
-								}
-						}
-						
-						if((usart2_cmd_len>6)&&(data==':')&&(command_len==0))
-						{
-								sscanf(usart2_cmd_buf,"+IPD,%d",&command_len); 
-						}
-						
-						if((usart2_cmd_len>=9)&&(command_len==0))
+						usart2_cmd_buf[usart2_cmd_len++]=data;
+						if((data=='}')||(usart2_cmd_len>=MAX_CMD_LEN-1))
 						{
 								rcv_cmd_start=0;
-								usart2_cmd_len=0;
-								memset(usart2_cmd_buf,0,MAX_CMD_LEN);   
-						}
-						
-						if(command_len!=0)
-						{
-								if((++command_len1)>command_len)
-								{
-										//usart1_write(USART1,usart2_cmd_buf,usart2_cmd_len);
-										rcv_cmd_start=0;
-										rcv_cmd_flag=1;
-										
-								}	
+								LED_CmdCtl();
+								memset(usart2_cmd_buf,0,usart2_cmd_len);
+        				usart2_cmd_len=0;
 						}
 				}	  
     }

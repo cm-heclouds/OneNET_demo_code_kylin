@@ -36,14 +36,13 @@ int main(void)
 		KEY_Init();	   //按键初始化函数
 		USART1_Init(); //USART1串口初始化函数
 		USART2_Init(); //USART2串口初始化函数
-		
 		while(1)
-		{	
+		{		
 				LED_Switch(LED_ON,LED_R|LED_G|LED_Y|LED_B);	   //点亮开发板四个指示灯，表示程序进入主流程
 				ESP8266_Init();    //ESP8266初始化
 				ESP8266_DevLink(DEVICEID,APIKEY,20);    //和平台建立设备连接
 				LED_Switch(LED_OFF,LED_R|LED_G|LED_Y|LED_B); //熄灭开发板四个指示灯，表示程序完成设备连接，进入数据发送循环
-	
+			
 				while(1)
 				{								
 						if(!(ESP8266_CheckStatus(30)))    //检测ESP8266模块连接状态
@@ -54,19 +53,8 @@ int main(void)
 						{
 								break;
 						}
-						
-						if(rcv_cmd_flag==1)    //平台LED控制命令接收完成标记
-						{
-								LED_CmdCtl(); //命令处理
-								memset(usart2_cmd_buf,0,usart2_cmd_len); //清除命令接收缓冲
-								usart2_cmd_len=0;
-								command_len1=0;
-								command_len=0;  
-								rcv_cmd_flag=0;
-						}
 				}
-		}
-		return 0;
+		}	
 }
 
 /******************* (C) COPYRIGHT 2010 STMicroelectronics *****END OF FILE****/

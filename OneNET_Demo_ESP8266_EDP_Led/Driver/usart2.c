@@ -8,8 +8,6 @@ volatile unsigned int   usart2_rcv_len=0;
 
 unsigned char  usart2_cmd_buf[MAX_CMD_LEN];
 volatile unsigned int   usart2_cmd_len=0;
-volatile unsigned int   command_len=0;
-volatile unsigned int   command_len1=0;
 
 /**
   * @brief  USART2初始化函数

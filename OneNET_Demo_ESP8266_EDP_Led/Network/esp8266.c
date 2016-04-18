@@ -4,6 +4,7 @@
 EdpPacket* send_pkg;
 char send_buf[MAX_SEND_BUF_LEN];
 
+
 /**
   * @brief  ESP8266初始化
 **/
@@ -30,11 +31,11 @@ void ESP8266_Init(void)
 		printf("%s\r\n","[ESP8266_Init]EXIT CWJAP.");
 	
 		printf("%s\r\n","[ESP8266_Init]ENTER CIPSTART.");
-		SendCmd(CIPSTART,"OK",30);
-		printf("%s\r\n","[ESP8266_Init]EXIT CIPSART.");\
+		SendCmd(CIPSTART,"OK",20);
+		printf("%s\r\n","[ESP8266_Init]EXIT CIPSART.");
 		
 		printf("%s\r\n","[ESP8266_Init]ENTER CIPMODE.");
-		SendCmd(CIPMODE_0,"OK",10);
+		SendCmd(CIPMODE,"OK",10);
 		printf("%s\r\n","[ESP8266_Init]EXIT CIPMODE.");
 }
 
@@ -107,21 +108,12 @@ void SendCmd(char* cmd, char* result, int timeOut)
 void ESP8266_DevLink(const char* devid, const char* auth_key, int timeOut)
 {
 		int32 count=0;
-		char  text0[25] = {0};
-		char  text1[50] = "AT+CIPSEND=";
 	
 		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
-		usart2_rcv_len=0;		
-
-		printf("%s\r\n","[ESP8266_DevLink]ENTER device link...");
-		send_pkg = PacketConnect1(devid,auth_key);
-		mDelay(200);
+		usart2_rcv_len=0;			
 		
-		sprintf(text0,"%d",send_pkg->_write_pos);
-		strcat(text1,text0);
-		strcat(text1,"\r\n");
-
-		usart2_write(USART2,text1,strlen(text1));
+		printf("%s\r\n","[ESP8266_DevLink]ENTER device link...");
+		usart2_write(USART2,CIPSEND,strlen(CIPSEND));  //向ESP8266发送数据透传指令
 		for(count=0;count<timeOut;count++)
 		{
 				mDelay(100);
@@ -129,11 +121,16 @@ void ESP8266_DevLink(const char* devid, const char* auth_key, int timeOut)
 				{
 						break;
 				}
-		}		
-		usart2_write(USART2,send_pkg->_data,send_pkg->_write_pos);
+		}	
+
+		send_pkg = PacketConnect1(devid,auth_key);
+		mDelay(200);
+		usart2_write(USART2,send_pkg->_data,send_pkg->_write_pos);  //发送设备连接请求数据
 		mDelay(500);
 		DeleteBuffer(&send_pkg);
 		mDelay(200);
+		usart2_write(USART2,"+++",3);  //向ESP8266发送+++结束透传，使ESP8266返回指令模式
+		mDelay(50);
 		printf("%s\r\n","[ESP8266_DevLink]EXIT device link...");
 }
 
@@ -147,33 +144,33 @@ int ESP8266_CheckStatus(int timeOut)
 	
 		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
 		usart2_rcv_len=0;
-	
+		
 		printf("%s\r\n","[ESP8266_CheckStatus]ENTER check status...");
 		usart2_write(USART2,CIPSTATUS,strlen(CIPSTATUS));
 		for(count=0;count<timeOut;count++)
 		{
 				mDelay(100);
-				if((NULL != strstr(usart2_rcv_buf,"STATUS:4")))
+				if((NULL != strstr(usart2_rcv_buf,"STATUS:4")))  //失去连接
 				{
 						res=-4;
 						break;
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"STATUS:3")))
+				else if((NULL != strstr(usart2_rcv_buf,"STATUS:3")))  //建立连接
 				{
 						res=0;	
 						break;
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"STATUS:2")))
+				else if((NULL != strstr(usart2_rcv_buf,"STATUS:2")))  //获得IP
 				{
 						res=-2;
 						break;				
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"STATUS:5")))
+				else if((NULL != strstr(usart2_rcv_buf,"STATUS:5")))  //物理掉线
 				{
 						res=-5;
 						break;
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"ERROR")))
+				else if((NULL != strstr(usart2_rcv_buf,"ERROR")))   
 				{
 						res=-1;
 						break;
@@ -182,7 +179,7 @@ int ESP8266_CheckStatus(int timeOut)
 				{
 						;
 				}
-		}		
+		}	
 		printf("%s\r\n","[ESP8266_CheckStatus]EXIT check status...");
 		return res;	
 }
@@ -193,32 +190,27 @@ int ESP8266_CheckStatus(int timeOut)
 void ESP8266_SendDat(void)
 {		
 		int32 count=0;
-		char  text0[25] = {0};
-		char  text1[50] = "AT+CIPSEND=";
 
 		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
 		usart2_rcv_len=0;			
 		printf("%s\r\n","[ESP8266_SendDat]ENTER Senddata...");
-		GetSendBuf();		
-		send_pkg = PacketSavedataSimpleString(NULL,send_buf);
-		mDelay(200);
-
-		sprintf(text0,"%d",send_pkg->_write_pos);
-		strcat(text1,text0);
-		strcat(text1,"\r\n");
-
-		usart2_write(USART2,text1,strlen(text1));
-		for(count=0;count<30;count++)
+		usart2_write(USART2,CIPSEND,strlen(CIPSEND));  //向ESP8266发送数据透传指令
+		for(count=0;count<40;count++)
 		{
 				mDelay(100);
 				if((NULL != strstr(usart2_rcv_buf,">")))
 				{
 						break;
 				}
-		}		
-		usart2_write(USART2,send_pkg->_data,send_pkg->_write_pos);
-		mDelay(500);
+		}	
+	
+		GetSendBuf();		
+		send_pkg = PacketSavedataSimpleString(DEVICEID,send_buf);   
+		usart2_write(USART2,send_pkg->_data,send_pkg->_write_pos);	//向平台上传数据点
 		DeleteBuffer(&send_pkg);
+		mDelay(500);
+
+		usart2_write(USART2,"+++",3);  //向ESP8266发送+++结束透传，使ESP8266返回指令模式
 		mDelay(200);
 		printf("%s\r\n","[ESP8266_SendDat]EXIT Senddata...");
 }

@@ -6,6 +6,7 @@ volatile unsigned char  yellow_value=0;
 volatile unsigned char  blue_value=0;
 volatile unsigned char  green_value=0;
 
+
 /**
   * @brief  LED指示灯初始化函数
 **/
@@ -28,56 +29,53 @@ void LED_Init(void)
 	
 }
 
+
 /**
   * @brief  分析平台下发的LED控制命令
 **/
 void LED_CmdCtl(void)
 {
-		Buffer *buf=NewBuffer();
-		char * cmdid=NULL;
-		uint16_t cmdid_len=0;
-		char * req=NULL;
-		uint32_t req_len=0;
-		
-		printf("%s\r\n","[LED_CmdCtl]ENTER cmdctrl...");
- 		WriteBytes(buf,strstr(usart2_cmd_buf,":")+1,command_len);	
-		UnpackCmdReq(buf, &cmdid, &cmdid_len, &req, &req_len); 
-	
-		if((NULL != strstr(req, "LED11")))
+		if((NULL != strstr(usart2_cmd_buf, "LED11")))  //约定平台控制命令"LED11"为打开红色LED灯
 		{
 				LED_RED_ON;	
+				red_value=1;
 		}
-		if((NULL != strstr(req, "LED21")))
+		if((NULL != strstr(usart2_cmd_buf, "LED21")))  //约定平台控制命令"LED21"为打开绿色LED灯
 		{
 				LED_GREEN_ON;	
+				green_value=1;
 		}
-		if((NULL != strstr(req, "LED31")))
+		if((NULL != strstr(usart2_cmd_buf, "LED31")))  //约定平台控制命令"LED31"为打开黄色LED灯
 		{
 				LED_YELLOW_ON;
+				yellow_value=1;			
 		}
-		if((NULL != strstr(req, "LED41")))
+		if((NULL != strstr(usart2_cmd_buf, "LED41")))  //约定平台控制命令"LED41"为打开蓝色LED灯
 		{
 				LED_BLUE_ON;	
+				blue_value=1;
 		}
 		
-		if((NULL != strstr(req, "LED10")))
+		if((NULL != strstr(usart2_cmd_buf, "LED10")))  //约定平台控制命令"LED10"为关闭红色LED灯
 		{
 				LED_RED_OFF;	
+				red_value=0;
 		}
-		if((NULL != strstr(req, "LED20")))
+		if((NULL != strstr(usart2_cmd_buf, "LED20")))  //约定平台控制命令"LED20"为关闭绿色LED灯
 		{
 				LED_GREEN_OFF;
+				green_value=0;	
 		}
-		if((NULL != strstr(req, "LED30")))
+		if((NULL != strstr(usart2_cmd_buf, "LED30")))  //约定平台控制命令"LED30"为关闭黄色LED灯
 		{
 				LED_YELLOW_OFF;	
+				yellow_value=0;
 		}
-		if((NULL != strstr(req, "LED40")))
+		if((NULL != strstr(usart2_cmd_buf, "LED40")))  //约定平台控制命令"LED40"为关闭蓝色LED灯
 		{
 				LED_BLUE_OFF;	
+				blue_value=0;
 		}
-		DeleteBuffer(&buf);	
-		printf("%s\r\n","[LED_CmdCtl]EXIT cmdctrl...");
 }
 
 /**
@@ -129,6 +127,7 @@ void LED_Switch(const uint8_t statu,const uint8_t mode)
 				}
 		}
 }
+
 
 /**
   * @brief  获取LED的当前状态值

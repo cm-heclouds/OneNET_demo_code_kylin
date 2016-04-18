@@ -1,8 +1,8 @@
-#include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 //#include <assert.h>
+#include <time.h>
 #include "EdpKit.h"
 
 void assert(int ecp)
@@ -269,7 +269,7 @@ static void FormatAt(char* buffer, int len, time_t now)
     struct tm timinfo;
 
     if (now == 0){
-			now = 0;//time(0);
+	now = 0;  //time(0);
     }
 
 #if defined(linux) || defined(__linux) || defined(__linux__)
@@ -936,7 +936,6 @@ int32 UnpackSavedataBinStr(EdpPacket* pkg, char** desc_str,
     assert(pkg->_read_pos == pkg->_write_pos);
     return 0;
 }
-
 int32 UnpackCmdReq(EdpPacket* pkg, char** cmdid, uint16* cmdid_len, 
 		   char** req, uint32* req_len)
 {

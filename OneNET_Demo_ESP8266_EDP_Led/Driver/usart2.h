@@ -2,7 +2,7 @@
 #define USART2_H_H
 
 #define MAX_RCV_LEN  1024
-#define MAX_CMD_LEN  512
+#define MAX_CMD_LEN  256
 
 
 extern void USART2_Init(void);
@@ -17,8 +17,6 @@ extern volatile unsigned int   usart2_rcv_len;
 extern unsigned char  usart2_cmd_buf[MAX_CMD_LEN];
 extern volatile unsigned int   usart2_cmd_len;
 
-extern volatile unsigned int   command_len;
-extern volatile unsigned int   command_len1;
 
 
 #endif
