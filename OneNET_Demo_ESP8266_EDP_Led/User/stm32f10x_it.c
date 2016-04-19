@@ -151,7 +151,7 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f10x_xx.s).                                            */
 /******************************************************************************/
 
-//外部中断，存/取PE[15:7]数据
+
 void EXTI0_IRQHandler(void)
 {
     
