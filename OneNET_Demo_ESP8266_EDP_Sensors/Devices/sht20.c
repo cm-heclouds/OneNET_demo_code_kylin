@@ -58,7 +58,7 @@ int8_t SHT2x_MeasureHM(uint8_t cmd, uint16_t *pMeasurand)
     uint16_t tmp;
     float t;
     //start
-    addr = SHT20_ADDRESS << 1;
+    addr = (int8_t)(SHT20_ADDRESS << 1);
     I2C_AcknowledgeConfig(I2C2, ENABLE);
 
     I2C_GenerateSTART(I2C2, ENABLE);      /**********start**********/
@@ -89,17 +89,17 @@ int8_t SHT2x_MeasureHM(uint8_t cmd, uint16_t *pMeasurand)
 
     //I2C_AcknowledgeConfig(I2C2, DISABLE);//如果调用了，那么crc无效
     I2C_GenerateSTOP(I2C2, ENABLE);   /********stop******/
-    SHT2x_CheckCrc(data, 2, checksum);
+    SHT2x_CheckCrc((int8_t*)data, 2, checksum);
     tmp = (data[0] << 8) + data[1];
     if(cmd == SHT20_Measurement_T_HM)
     {
         t = SHT2x_CalcTemperatureC(tmp);
-        printf("%s data[0]=%d,data[1]=%d,checksum=%d,t=%f\n", __func__, data[0], data[1], SHT2x_CheckCrc(data, 2, checksum), t);
+        printf("%s data[0]=%d,data[1]=%d,checksum=%d,t=%f\n", __func__, data[0], data[1], SHT2x_CheckCrc((int8_t*)data, 2, checksum), t);
     }
     else
     {
         t = SHT2x_CalcRH(tmp);
-        printf("%s data[0]=%d,data[1]=%d,checksum=%d,rh=%f%\n", __func__, data[0], data[1], SHT2x_CheckCrc(data, 2, checksum), t);
+        printf("%s data[0]=%d,data[1]=%d,checksum=%d,rh=%f%\n", __func__, data[0], data[1], SHT2x_CheckCrc((int8_t*)data, 2, checksum), t);
     }
     if(pMeasurand)
     {
@@ -273,7 +273,7 @@ int8_t SHT2x_GetSerialNumber(uint8_t SerialNumber[])
 {
     int8_t  error = 0, addr, i = 0;                    //error variable
     //Read from memory location 1
-    addr = SHT20_ADDRESS << 1;
+    addr = (int8_t)(SHT20_ADDRESS << 1);
     I2C_AcknowledgeConfig(I2C2, ENABLE);
 
     I2C_GenerateSTART(I2C2, ENABLE);      /**********start**********/

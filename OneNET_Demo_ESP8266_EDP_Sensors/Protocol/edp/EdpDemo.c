@@ -19,6 +19,8 @@
 #include "EdpDemo.h"
 #include "esp8266.h"
 
+void ADXL345_GETXYZ(int16_t data_out[3]);
+void HMC5883L_GetXYZ(int16_t data_out[3]);
 int8_t src_api_key[] = "nCVNXYCoX68IHG4DgpyNu5aTXfY=";
 int8_t src_dev[] = "768596";
 /**
@@ -30,7 +32,7 @@ int8_t src_dev[] = "768596";
  **/
 int32_t DoSend(int32_t sockfd, const uint8_t *buffer, uint32_t len)
 {
-    USART2_SendData((uint8_t *)(buffer), len);
+    USART2_SendData((int8_t *)(buffer), len);
     /* wululu test print send bytes */
     hexdump((const uint8_t *)buffer, len);
     return len;
@@ -105,7 +107,7 @@ void Save_TempHumToOneNet(void)
     SHT2x_MeasureHM(SHT20_Measurement_T_HM, temperature);
     printf("%s %d hum:%d\n", __func__, __LINE__, (uint32_t)hum[0]);
     printf("%s %d t:%d\n", __func__, __LINE__, (uint32_t)temperature[0]);
-    snprintf(data_string_dst, sizeof(data_string), data_string, (uint32_t)temperature[0], (uint32_t)hum[0]);
+    snprintf((char *)data_string_dst, sizeof(data_string), (const char *)data_string, (uint32_t)temperature[0], (uint32_t)hum[0]);
     printf("%s %d t:%s\n", __func__, __LINE__, data_string_dst);
     send_pkg = PacketSavedataSimpleString(NULL, data_string_dst);
 
@@ -117,7 +119,7 @@ uint8_t data_string_dst[256];
 uint8_t data_string_t[64];
 uint8_t data_string_adxl[64];
 uint8_t data_string_hmc5883l[64];
-
+uint16_t Read_BH1750(void);
 void Save_AllSensorsToOneNet(void)
 {
     EdpPacket* send_pkg;
@@ -126,32 +128,34 @@ void Save_AllSensorsToOneNet(void)
     int16_t adxl[3], hmc5883l[3];
     /*读取温湿度*/
     memset(data_string_dst, 0, sizeof(data_string_dst));
+
     SHT20_read_user_reg();
+
     mDelay(200);//延迟，设备没有那么快的响应时间，否则总线处理忙等
     SHT2x_MeasureHM(SHT20_Measurement_T_HM, temperature);
     mDelay(1000);
     SHT2x_MeasureHM(SHT20_Measurement_RH_HM, hum);
     mDelay(400);
     f = (uint16_t)Read_BH1750();
-    snprintf(data_string_t, sizeof(data_string_t), ",;BH1750FVI,%d;SHT20_temperature,%d;SHT20_hum,%d;", (uint16_t)f, (uint16_t)temperature[0], (uint16_t)hum[0]);
+    snprintf((char *)data_string_t, sizeof(data_string_t), ",;BH1750FVI,%d;SHT20_temperature,%d;SHT20_hum,%d;", (uint16_t)f, (uint16_t)temperature[0], (uint16_t)hum[0]);
     /*读取BH1750FVI*/
     printf("%s\n", data_string_t);
     mDelay(400);
     /*读取ADXL345*/
     ADXL345_GETXYZ(adxl);
-    snprintf(data_string_adxl, sizeof(data_string_adxl), "ADXL345_x,0x%x;ADXL345_y,0x%0x;ADXL345_z,0x%x;", (uint16_t)adxl[0], (uint16_t)adxl[1], (uint16_t)adxl[2]);
+    snprintf((char *)data_string_adxl, sizeof(data_string_adxl), "ADXL345_x,0x%x;ADXL345_y,0x%0x;ADXL345_z,0x%x;", (uint16_t)adxl[0], (uint16_t)adxl[1], (uint16_t)adxl[2]);
     printf("%s\n", data_string_adxl);
     mDelay(400);
     /*读取HMC588CL*/
     HMC5883L_GetXYZ(hmc5883l);
 
-    snprintf(data_string_hmc5883l, sizeof(data_string_hmc5883l), "HMC5883L_x,0x%x;HMC5883L_y,0x%x;HMC5883L_z,0x%x", (uint16_t)hmc5883l[0], (uint16_t)hmc5883l[2], (uint16_t)hmc5883l[1]);
+    snprintf((char *)data_string_hmc5883l, sizeof(data_string_hmc5883l), "HMC5883L_x,0x%x;HMC5883L_y,0x%x;HMC5883L_z,0x%x", (uint16_t)hmc5883l[0], (uint16_t)hmc5883l[2], (uint16_t)hmc5883l[1]);
     printf("%s\n", data_string_hmc5883l);
-    strcat(data_string_dst, data_string_t);
-    strcat(data_string_dst, data_string_adxl);
-    strcat(data_string_dst, data_string_hmc5883l);
+    strcat((char *)data_string_dst, (const char *)data_string_t);
+    strcat((char *)data_string_dst, (const char *)data_string_adxl);
+    strcat((char *)data_string_dst, (const char *)data_string_hmc5883l);
     printf("%s\n", data_string_dst);
-    send_pkg = PacketSavedataSimpleString(NULL, data_string_dst);
+    send_pkg = PacketSavedataSimpleString(NULL, (const int8_t*)data_string_dst);
 
     DoSend(0, (const uint8_t *)send_pkg->_data, send_pkg->_write_pos);
     DeleteBuffer(&send_pkg);
@@ -166,13 +170,15 @@ void EDP_Loop(void)
     mDelay(2000);
     while(1)
     {
+		Hal_I2C_Init();
         Connect_RequestType1(src_dev, src_api_key);
         mDelay(1000);
         mDelay(1000);
         mDelay(1000);
         mDelay(1000);
-        printf("%s %d\n", __func__, __LINE__);
+       
         Recv_Thread_Func();
+		printf("%s %d\n", __func__, __LINE__);
         mDelay(1000);
         mDelay(1000);
 #if 0
@@ -308,7 +314,7 @@ void Recv_Thread_Func(void)
 
                             UnpackSavedataDouble(jsonorbin,
                                                  pkg,
-                                                 &ds_id,
+                                                 (char **)&ds_id,
                                                  &dValue);
                             printf
                             ("ds_id = %s\nvalue = %f\n",
@@ -327,7 +333,7 @@ void Recv_Thread_Func(void)
                                               save_bin,
                                               &save_binlen);
                             desc_json_str =
-                                cJSON_Print(desc_json);
+                                (int8_t *)cJSON_Print(desc_json);
                             printf
                             ("recv save data bin, src_devid: %s, desc json: %s, bin: %s, binlen: %d\n",
                              src_devid, desc_json_str,
@@ -365,7 +371,7 @@ void Recv_Thread_Func(void)
                          * 用户按照自己的需求处理并返回，响应消息体可以为空，此处假设返回2个字符"ok"。
                          * 处理完后需要释放
                          */
-                        cmd_resp_len = strlen(cmd_resp);
+                        cmd_resp_len = strlen((const char *)cmd_resp);
                         send_pkg =
                             PacketCmdResp(cmdid, cmdid_len,
                                           cmd_resp,

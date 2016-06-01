@@ -10,7 +10,8 @@ extern void USART2_Write(USART_TypeDef* USARTx, uint8_t *Data,uint8_t len);
 extern void USART2_Clear(void);
 extern volatile unsigned char  gprs_ready_flag;
 extern volatile unsigned char  gprs_ready_count;
-
+uint32_t USART2_GetRcvNum(void);
+void  USART2_GetRcvData(uint8_t *buf, uint32_t rcv_len);
 extern unsigned char  usart2_rcv_buf[MAX_RCV_LEN];
 extern volatile unsigned int   usart2_rcv_len;
 void SendCmd(char* cmd, char* result, int timeOut);

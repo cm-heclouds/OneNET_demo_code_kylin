@@ -8,8 +8,8 @@
 #include "utils.h"
 
 const int16_t POLYNOMIAL = 0x131;
-int8_t SHT2x_CheckCrc(int8_t data[], int8_t nbrOfBytes, int8_t checksum);
-float SHT2x_CalcTemperatureC(int16_t u16sT);
+int8_t SHT2x_CheckCrc(uint8_t data[], int8_t nbrOfBytes, int8_t checksum);
+float SHT2x_CalcTemperatureC(uint16_t u16sT);
 float SHT2x_CalcRH(uint16_t u16sRH);
 
 /**
@@ -53,12 +53,13 @@ void SHT20_write_user_reg(uint8_t val)
   **/
 int8_t SHT2x_MeasureHM(uint8_t cmd, uint16_t *pMeasurand)
 {
-    int8_t  checksum, addr;  //checksum
+    int8_t  checksum;
+		uint8_t addr;  //checksum
     uint8_t  data[2];    //data array for checksum verification
     uint16_t tmp;
     float t;
     //start
-    addr = SHT20_ADDRESS << 1;
+    addr =(uint8_t)( SHT20_ADDRESS << 1);
     I2C_AcknowledgeConfig(I2C2, ENABLE);
 
     I2C_GenerateSTART(I2C2, ENABLE);      /**********start**********/
@@ -105,7 +106,6 @@ int8_t SHT2x_MeasureHM(uint8_t cmd, uint16_t *pMeasurand)
     {
         *pMeasurand = (uint16_t)t;
     }
-    printf("%s %d\n", __func__, *pMeasurand);
     return 0;
 }
 #if 0
@@ -224,7 +224,7 @@ void SHT20_loop(void)
     }
 }
 
-int8_t SHT2x_CheckCrc(int8_t data[], int8_t nbrOfBytes, int8_t checksum)
+int8_t SHT2x_CheckCrc(uint8_t data[], int8_t nbrOfBytes, int8_t checksum)
 {
     int8_t crc = 0;
     int8_t bit;
@@ -243,7 +243,7 @@ int8_t SHT2x_CheckCrc(int8_t data[], int8_t nbrOfBytes, int8_t checksum)
     else return 0;
 }
 
-float SHT2x_CalcTemperatureC(int16_t u16sT)
+float SHT2x_CalcTemperatureC(uint16_t u16sT)
 {
     float temperatureC;            // variable for result
 
@@ -271,9 +271,10 @@ float SHT2x_CalcRH(uint16_t u16sRH)
   **/
 int8_t SHT2x_GetSerialNumber(uint8_t SerialNumber[])
 {
-    int8_t  error = 0, addr, i = 0;                    //error variable
+    int8_t  error = 0, i = 0;                    //error variable
+		uint8_t addr;
     //Read from memory location 1
-    addr = SHT20_ADDRESS << 1;
+    addr = (uint8_t)(SHT20_ADDRESS << 1);
     I2C_AcknowledgeConfig(I2C2, ENABLE);
 
     I2C_GenerateSTART(I2C2, ENABLE);      /**********start**********/

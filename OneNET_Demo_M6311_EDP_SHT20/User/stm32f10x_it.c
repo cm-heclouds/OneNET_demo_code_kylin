@@ -163,8 +163,7 @@ void EXTI0_IRQHandler(void)
   */
 void USART1_IRQHandler(void)
 {
-		unsigned int data;
-
+		unsigned char data;
     if(USART1->SR & 0x0F)
     {
         // See if we have some kind of error
@@ -188,7 +187,7 @@ void USART1_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
 
-		unsigned int data;
+		unsigned char data;
 #if 1
 		 USART_ITConfig(USART2, USART_IT_RXNE, DISABLE);
     if(USART2->SR & 0x0F)

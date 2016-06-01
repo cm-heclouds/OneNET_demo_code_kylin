@@ -7,6 +7,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "utils.h"
+#include "usart2.h"
 
 uint8_t  usart2_rcv_buf[MAX_RCV_LEN];
 volatile uint32_t   usart2_rcv_len = 0;
@@ -70,23 +72,23 @@ void USART2_Write(USART_TypeDef* USARTx, uint8_t *Data, uint32_t len)
 /*
  *  @brief USART2串口发送AT命令用
  */
-void SendCmd(int8_t* cmd, int8_t* result, int32_t timeOut)
+void SendCmd(uint8_t* cmd, int8_t* result, int32_t timeOut)
 {
     while(1)
     {
-        memset(usart2_rcv_buf, 0, strlen(usart2_rcv_buf));
+        memset(usart2_rcv_buf, 0, strlen((const char *)usart2_rcv_buf));
         usart2_rcv_len = 0;
 
-        USART2_Write(USART2, cmd, strlen(cmd));
+        USART2_Write(USART2, cmd, strlen((const char *)cmd));
         mDelay(timeOut);
         printf("%s %d cmd:%s,rsp:%s\n", __func__, __LINE__, cmd, usart2_rcv_buf);
 			
-        if((NULL != strstr(usart2_rcv_buf, "ERROR")))
+        if((NULL != strstr((const char *)usart2_rcv_buf, "ERROR")))
         {
             continue;
         }
 				
-        if((NULL != strstr(usart2_rcv_buf, result)))
+        if((NULL != strstr((const char *)usart2_rcv_buf, (const char *)result)))
         {
             break;
         }
@@ -113,7 +115,7 @@ void  USART2_GetRcvData(uint8_t *buf, uint32_t rcv_len)
     {
         memcpy(buf, usart2_rcv_buf, rcv_len);
     }
-    memset(usart2_rcv_buf, 0, strlen(usart2_rcv_buf));
+    memset(usart2_rcv_buf, 0, sizeof(usart2_rcv_buf));
     usart2_rcv_len = 0;
 }
 #endif

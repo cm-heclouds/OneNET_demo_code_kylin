@@ -3,7 +3,8 @@
 #include "utils.h"
 #include "stm32f10x.h"
 #include "sht20.h"
-
+#include "usart2.h"
+#include "esp8266.h"
 #ifdef WIN32
 #error Not support Windows now.
 #endif // WIN32
@@ -126,7 +127,7 @@ static int MqttSample_SendPkt(void *arg, const struct iovec *iov, int iovcnt)
       printf("0x%x ",send_buf[i]);
     }
     printf("\r\n*********\r\n");
-    bytes = USART2_SendData(send_buf, bytes);
+    bytes = USART2_SendData((int8_t *)send_buf, bytes);
     return bytes;
 }
 
@@ -266,7 +267,7 @@ static int MqttSample_HandleCmd(void *arg, uint16_t pkt_id, const char *cmdid,
 static int MqttSample_CmdConnect(struct MqttSampleContext *ctx)
 {
     int err;
-    int bytes = 0;
+
     printf("%s %d\n", __func__, __LINE__);
     err = Mqtt_PackConnectPkt(ctx->mqttbuf, 0, ctx->devid, 1, "WillTopic",
                               "will message-test", 17, MQTT_QOS_LEVEL0, 0, ctx->proid,
@@ -276,7 +277,7 @@ static int MqttSample_CmdConnect(struct MqttSampleContext *ctx)
         printf("Failed to pack the MQTT CONNECT PACKET, errcode is %d.\n", err);
         return -1;
     }
-    bytes = Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
+    Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
@@ -288,7 +289,7 @@ static int MqttSample_CmdConnect(struct MqttSampleContext *ctx)
 static int MqttSample_CmdPing(struct MqttSampleContext *ctx)
 {
     int err;
-    int bytes = 0;
+
     printf("%s %d\n", __func__, __LINE__);
     err = Mqtt_PackPingReqPkt(ctx->mqttbuf);
     if(MQTTERR_NOERROR != err)
@@ -296,7 +297,7 @@ static int MqttSample_CmdPing(struct MqttSampleContext *ctx)
         printf("Critical bug: failed to pack the ping request packet.err=%d\n", err);
         return -1;
     }
-    bytes = Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
+    Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
@@ -309,7 +310,7 @@ static int MqttSample_CmdPublish(struct MqttSampleContext *ctx)
 {
     uint8_t cause = 0; //only for test
     int err = 0;
-    int bytes = 0;
+
     static unsigned char count = 0;
     int64_t ts = 0; //no time
     uint16_t temprature[1], rh[1];
@@ -338,7 +339,7 @@ static int MqttSample_CmdPublish(struct MqttSampleContext *ctx)
         }
         else
         {
-            err |= Mqtt_AppendDPSubvalueString(ctx->mqttbuf, DS_TO_PUBLISH, "未知初始状态");
+            err |= Mqtt_AppendDPSubvalueString(ctx->mqttbuf, DS_TO_PUBLISH, "未知");
         }
         if(count != 2)
         {
@@ -365,7 +366,7 @@ static int MqttSample_CmdPublish(struct MqttSampleContext *ctx)
         printf("Failed to pack data point package.err=%d\n", err);
         return -1;
     }
-    bytes = Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
+    Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
@@ -380,11 +381,11 @@ int Mqtt_AppendLength(struct MqttBuffer *buf, uint32_t len);
 static int MqttSample_CmdPublishNormal(struct MqttSampleContext *ctx, uint8_t cause)
 {
     int err = 0, ir_index = 0;
-    int bytes = 0;
+
     struct MqttExtent *ext;
-    unsigned char dis[3][64] = {"未知初始状态", "设备在位", "设备离位"};
+    unsigned char dis[3][64] = {"未知","设备在位","设备离位"};
     static unsigned char count = 0;
-    int64_t ts = 0; //no time
+
     uint16_t temprature[1], rh[1];
     if(ctx->publish_state != 0)
     {
@@ -425,13 +426,13 @@ static int MqttSample_CmdPublishNormal(struct MqttSampleContext *ctx, uint8_t ca
         //append data; String
         printf("pub state\n");
         err |= Mqtt_PackDataPointStartNormal(ctx->mqttbuf, (char *)(DS_TO_PUBLISH), 1, MQTT_QOS_LEVEL2, 0, 1);
-        ext = MqttBuffer_AllocExtent(ctx->mqttbuf, 1 + strlen(dis[ir_index]));
+        ext = MqttBuffer_AllocExtent(ctx->mqttbuf, 1 + strlen((const char *)dis[ir_index]));
         if(!ext)
         {
             return MQTTERR_OUTOFMEMORY;
         }
         ext->payload[0] = 0x84;;
-        memcpy(&ext->payload[1], dis[ir_index], strlen(dis[ir_index]));
+        memcpy(&ext->payload[1], dis[ir_index], strlen((const char *)dis[ir_index]));
         MqttBuffer_AppendExtent(ctx->mqttbuf, ext);
     }
     else if(count == 1)
@@ -482,7 +483,7 @@ static int MqttSample_CmdPublishNormal(struct MqttSampleContext *ctx, uint8_t ca
         return err;
     }
 
-    bytes = Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
+    Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
@@ -495,7 +496,7 @@ static int MqttSample_CmdPublishNormal(struct MqttSampleContext *ctx, uint8_t ca
 static int MqttSample_CmdSubscribe(struct MqttSampleContext *ctx)
 {
     int err;
-    int bytes = 0;
+
     printf("%s %d\n", __func__, __LINE__);
     err = Mqtt_PackSubscribePkt(ctx->mqttbuf, 1, TOPIC_TO_SUB, MQTT_QOS_LEVEL1);
     if(err != MQTTERR_NOERROR)
@@ -512,7 +513,7 @@ static int MqttSample_CmdSubscribe(struct MqttSampleContext *ctx)
                "subscribe packet.\n");
         return -1;
     }
-    bytes = Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
+    Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
@@ -524,7 +525,7 @@ static int MqttSample_CmdSubscribe(struct MqttSampleContext *ctx)
 static int MqttSample_CmdUnsubscribe(struct MqttSampleContext *ctx)
 {
     int err;
-    int bytes = 0;
+
     printf("%s %d\n", __func__, __LINE__);
     err = Mqtt_PackUnsubscribePkt(ctx->mqttbuf, PACK_FALG_UNSUB, TOPIC_TO_UNSUB);
     if(err != MQTTERR_NOERROR)
@@ -540,7 +541,7 @@ static int MqttSample_CmdUnsubscribe(struct MqttSampleContext *ctx)
                "unsubscribe packet.\n");
         return -1;
     }
-    bytes = Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
+    Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
@@ -568,7 +569,7 @@ static int MqttSample_CmdDisconnect(struct MqttSampleContext *ctx)
 static int MqttSample_CmdCmdRet(struct MqttSampleContext *ctx)
 {
     int err;
-    int bytes = 0;
+
     printf("%s %d\n", __func__, __LINE__);
     err = Mqtt_PackCmdRetPkt(ctx->mqttbuf, 1, ctx->cmdid,
                              "dkdkkxiiii", 11, 0);
@@ -577,7 +578,7 @@ static int MqttSample_CmdCmdRet(struct MqttSampleContext *ctx)
         printf("Critical bug: failed to pack the cmd ret packet.\n");
         return -1;
     }
-    bytes = Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
+    Mqtt_SendPkt(ctx->mqttctx, ctx->mqttbuf, 0);
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }

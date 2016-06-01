@@ -46,6 +46,7 @@
   *			    Recv_Thread_Func函数是调用的官方edp_sdk中提供的函数，在其上加以修改
   *			    其中提供了所有的EDP包的解析函数
   */
+void Recv_Thread_Func(void);
 int main(void)
 {
     cJSON *desc_json;
@@ -57,17 +58,15 @@ int main(void)
 
     mDelay(3000);
 
-init:
-
     ESP8266_Init();         //模块初始化
 	printf("ESP8266 init over\r\n");
 	
-	/* 发送EDP设备连接包 */
+		/* 发送EDP设备连接包 */
 	send_pkg = PacketConnect1(DEV_ID, API_KEY);
     if(send_pkg == NULL)
     {
 		printf("conn pkt create error\r\n");
-        return;
+        return -1;
     }
 	printf("send connect to server, bytes: %d\r\n", send_pkg->_write_pos);
     USART2_Write(USART2, (uint8_t*)(send_pkg->_data), send_pkg->_write_pos);	//串口发送
@@ -88,11 +87,11 @@ init:
         //Recv_Thread_Func();
 
         /* 上传图片 - 发送EDP包头 */
-		send_pkg = PacketSavedataBin(NULL, desc_json, image, sizeof(image));//创建EDP包头，不包含二进制数据
+		send_pkg = PacketSavedataBin(NULL, desc_json, (const uint8_t *)image, sizeof(image));//创建EDP包头，不包含二进制数据
 		if(send_pkg == NULL)
 		{
 			printf("save bin pkt create error\r\n");
-			return;
+			return -1;
 		}
 		printf("send EDP head\r\n");
 		USART2_Write(USART2, (uint8_t*)(send_pkg->_data), send_pkg->_write_pos);//串口发送

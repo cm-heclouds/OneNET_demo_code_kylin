@@ -54,11 +54,11 @@ void SHT20_write_user_reg(uint8_t val)
 int8_t SHT2x_MeasureHM(uint8_t cmd, uint16_t *pMeasurand)
 {
     int8_t  checksum, addr;  //checksum
-    uint8_t  data[2];    //data array for checksum verification
+    int8_t  data[2];    //data array for checksum verification
     uint16_t tmp;
     float t;
     //start
-    addr = SHT20_ADDRESS << 1;
+    addr = (int8_t)(SHT20_ADDRESS << 1);
     I2C_AcknowledgeConfig(I2C2, ENABLE);
 
     I2C_GenerateSTART(I2C2, ENABLE);      /**********start**********/
@@ -273,7 +273,7 @@ int8_t SHT2x_GetSerialNumber(uint8_t SerialNumber[])
 {
     int8_t  error = 0, addr, i = 0;                    //error variable
     //Read from memory location 1
-    addr = SHT20_ADDRESS << 1;
+    addr =(int8_t) (SHT20_ADDRESS << 1);
     I2C_AcknowledgeConfig(I2C2, ENABLE);
 
     I2C_GenerateSTART(I2C2, ENABLE);      /**********start**********/

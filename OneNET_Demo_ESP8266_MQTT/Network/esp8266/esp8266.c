@@ -18,11 +18,11 @@ void ESP8266_Init(int8_t * server, int8_t * ssid_pwd)
     SendCmd(ssid_pwd, "OK", 2000);  /*配置要连接的路由器SSID和密码*/
     SendCmd(server, "OK", 2000); /*与服务器建立TCP连接*/
     SendCmd(CIPMODE, "OK", 1000); /*透传模式*/
-    memset(usart2_rcv_buf, 0, strlen(usart2_rcv_buf)); /*先清除接收缓冲区*/
+    memset(usart2_rcv_buf, 0, strlen((const char *)usart2_rcv_buf)); /*先清除接收缓冲区*/
     usart2_rcv_len = 0;
     USART2_Write(USART2, CIPSEND, strlen(CIPSEND)); /*开始透传*/
     mDelay(500);
-    if((NULL != strstr(usart2_rcv_buf, "ERROR")))
+    if((NULL != strstr((const char *)usart2_rcv_buf, "ERROR")))
     {
         return;
     }
@@ -36,10 +36,11 @@ void ESP8266_Init(int8_t * server, int8_t * ssid_pwd)
   **/
 uint32_t ESP8266_SendData(int8_t * buf, uint32_t len)
 {
-    memset(usart2_rcv_buf, 0, strlen(usart2_rcv_buf));
+    memset(usart2_rcv_buf, 0, strlen((const char *)usart2_rcv_buf));
     usart2_rcv_len = 0;
-    USART2_Write(USART2, buf, len);
+    USART2_Write(USART2, (uint8_t*)buf, len);
     mDelay(100);
+		return len;
 }
 
 /**

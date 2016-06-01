@@ -51,7 +51,7 @@ int main(void)
 				{	
 						EMW3081_SendBinDat(); //使用EMW3081向平台发送数据
 
-						if((NULL != strstr(usart2_rcv_buf, "+ERR"))) //检测EMW3081发送一个二进制文件过程是否出错
+						if((NULL != strstr((const char *)usart2_rcv_buf, "+ERR"))) //检测EMW3081发送一个二进制文件过程是否出错
 						{
 								break; //如果文件发送出错，退出数据发送循环
 						}				

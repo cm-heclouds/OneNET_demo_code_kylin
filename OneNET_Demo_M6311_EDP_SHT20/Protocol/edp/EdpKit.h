@@ -256,7 +256,7 @@ EDPKIT_DLL int32_t WriteUint32(Buffer* buf, uint32_t val);
  *          <0      失败, pkg中无数据
  *          =0      成功
  */
-EDPKIT_DLL int32_t WriteStr(Buffer* buf, const char *str);
+EDPKIT_DLL int32_t WriteStr(Buffer* buf, const int8_t *str);
 /*
  * 函数名:  WriteRemainlen
  * 功能:    按EDP协议, 将remainlen写入Buffer(包)中
@@ -334,7 +334,7 @@ EDPKIT_DLL uint8 EdpPacketType(EdpPacket* pkg);
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EDPKIT_DLL EdpPacket* PacketConnect1(const char* devid, const char* auth_key);
+EDPKIT_DLL EdpPacket* PacketConnect1(const int8_t* devid, const int8_t* auth_key);
 
 /*
  * 函数名:  PacketConnect2
@@ -349,7 +349,7 @@ EDPKIT_DLL EdpPacket* PacketConnect1(const char* devid, const char* auth_key);
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EDPKIT_DLL EdpPacket* PacketConnect2(const char* userid, const char* auth_info);
+EDPKIT_DLL EdpPacket* PacketConnect2(const int8_t* userid, const int8_t* auth_info);
 
 /*
  * 函数名:  UnpackConnectResp
@@ -377,8 +377,8 @@ EDPKIT_DLL int32_t UnpackConnectResp(EdpPacket* pkg);
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EDPKIT_DLL EdpPacket* PacketPushdata(const char* dst_devid,
-                                     const char* data, uint32 data_len);
+EDPKIT_DLL EdpPacket* PacketPushdata(const int8_t* dst_devid,
+                                     const int8_t* data, uint32 data_len);
 
 /*
  * 函数名:  UnpackPushdata
@@ -395,8 +395,8 @@ EDPKIT_DLL EdpPacket* PacketPushdata(const char* dst_devid,
  *          =0          解析成功
  *          <0          解析失败, 具体失败原因见本h文件的错误码
  */
-EDPKIT_DLL int32_t UnpackPushdata(EdpPacket* pkg, char** src_devid,
-                                  char** data, uint32* data_len);
+EDPKIT_DLL int32_t UnpackPushdata(EdpPacket* pkg, int8_t** src_devid,
+                                  int8_t** data, uint32* data_len);
 
 /*
  * 函数名:  PacketSavedataJson
@@ -410,7 +410,7 @@ EDPKIT_DLL int32_t UnpackPushdata(EdpPacket* pkg, char** src_devid,
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EdpPacket* PacketSavedataJson(const char* dst_devid, cJSON* json_obj, int type);
+EdpPacket* PacketSavedataJson(const int8_t* dst_devid, cJSON* json_obj, int type);
 
 /*
  * 函数名:  PacketSavedataInt
@@ -557,7 +557,7 @@ EDPKIT_DLL int32_t UnpackSavedataString(SaveDataType type, EdpPacket* pkg,
  *          =0          心跳成功
  *          <0          解析失败, 具体失败原因见本h文件的错误码
  */
-EDPKIT_DLL int32_t UnpackSavedataAck(EdpPacket* pkg, char** json_ack);
+EDPKIT_DLL int32_t UnpackSavedataAck(EdpPacket* pkg, int8_t** json_ack);
 
 /*
  * 函数名:  PacketSavedataSimpleString
@@ -571,7 +571,7 @@ EDPKIT_DLL int32_t UnpackSavedataAck(EdpPacket* pkg, char** json_ack);
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EDPKIT_DLL EdpPacket* PacketSavedataSimpleString(const char* dst_devid, const char* input);
+EDPKIT_DLL EdpPacket* PacketSavedataSimpleString(const int8_t* dst_devid, const int8_t* input);
 
 /*
  * 函数名:  UnpackSavedataSimpleString
@@ -587,7 +587,7 @@ EDPKIT_DLL EdpPacket* PacketSavedataSimpleString(const char* dst_devid, const ch
  *          =0          解析成功
  *          <0          解析失败, 具体失败原因见本h文件的错误码
  */
-EDPKIT_DLL int32_t UnpackSavedataSimpleString(EdpPacket* pkg, char** output);
+EDPKIT_DLL int32_t UnpackSavedataSimpleString(EdpPacket* pkg, int8_t** output);
 
 /*
  * 函数名:  PacketSavedataBin
@@ -602,7 +602,7 @@ EDPKIT_DLL int32_t UnpackSavedataSimpleString(EdpPacket* pkg, char** output);
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EdpPacket* PacketSavedataBin(const char* dst_devid,
+EdpPacket* PacketSavedataBin(const int8_t* dst_devid,
                              cJSON* desc_obj, const uint8* bin_data, uint32 bin_len);
 /*
  * 函数名:  PacketSavedataBinStr
@@ -617,8 +617,8 @@ EdpPacket* PacketSavedataBin(const char* dst_devid,
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EDPKIT_DLL EdpPacket* PacketSavedataBinStr(const char* dst_devid,
-        const char* desc_str, const uint8* bin_data, uint32 bin_len);
+EDPKIT_DLL EdpPacket* PacketSavedataBinStr(const int8_t* dst_devid,
+        const int8_t* desc_str, const uint8* bin_data, uint32 bin_len);
 
 /*
  * 函数名:  UnpackSavedata
@@ -636,7 +636,7 @@ EDPKIT_DLL EdpPacket* PacketSavedataBinStr(const char* dst_devid,
  *          =0          解析成功
  *          <0          解析失败, 具体失败原因见本h文件的错误码
  */
-EDPKIT_DLL int32_t UnpackSavedata(EdpPacket* pkg, char** src_devid, uint8* jb_flag);
+EDPKIT_DLL int32_t UnpackSavedata(EdpPacket* pkg, int8_t** src_devid, uint8* jb_flag);
 
 /*
  * 函数名:  UnpackSavedataJson
@@ -679,7 +679,7 @@ int32_t UnpackSavedataBin(EdpPacket* pkg, cJSON** desc_obj,
  *          =0          解析成功
  *          <0          解析失败, 具体失败原因见本h文件的错误码
  */
-EDPKIT_DLL int32_t UnpackSavedataBinStr(EdpPacket* pkg, char** desc_str,
+EDPKIT_DLL int32_t UnpackSavedataBinStr(EdpPacket* pkg, int8_t** desc_str,
                                         uint8** bin_data, uint32* bin_len);
 /*
  * 函数名:  PacketCmdResp
@@ -695,8 +695,8 @@ EDPKIT_DLL int32_t UnpackSavedataBinStr(EdpPacket* pkg, char** desc_str,
  *          非空        EDP协议包
  *          为空        EDP协议包生成失败
  */
-EDPKIT_DLL EdpPacket* PacketCmdResp(const char* cmdid, uint16 cmdid_len,
-                                    const char* resp, uint32 resp_len);
+EDPKIT_DLL EdpPacket* PacketCmdResp(const int8_t* cmdid, uint16 cmdid_len,
+                                    const int8_t* resp, uint32 resp_len);
 
 /*
  * 函数名:  UnpackCmdReq
@@ -713,8 +713,8 @@ EDPKIT_DLL EdpPacket* PacketCmdResp(const char* cmdid, uint16 cmdid_len,
  *          =0          解析成功
  *          <0          解析失败, 具体失败原因见本h文件的错误码
  */
-EDPKIT_DLL int32_t UnpackCmdReq(EdpPacket* pkg, char** cmdid, uint16* cmdid_len,
-                                char** req, uint32* req_len);
+EDPKIT_DLL int32_t UnpackCmdReq(EdpPacket* pkg, int8_t** cmdid, uint16* cmdid_len,
+                                int8_t** req, uint32* req_len);
 
 /*
  * 函数名:  PacketPing

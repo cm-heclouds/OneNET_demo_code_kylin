@@ -25,8 +25,9 @@
 #include "stm32f10x_it.h"
 #include "usart1.h"
 #include "usart2.h"
-
-
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
 extern uint32_t SystickTime;
 extern __IO uint32_t TimeDisplay;
 
@@ -186,6 +187,7 @@ void USART1_IRQHandler(void)
   * @param  None
   * @retval : None
   */
+void LED_CmdCtl(void);
 void USART2_IRQHandler(void)
 {
 		unsigned int data;

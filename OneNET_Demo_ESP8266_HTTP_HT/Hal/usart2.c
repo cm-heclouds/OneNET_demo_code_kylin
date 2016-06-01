@@ -65,7 +65,7 @@ void USART2_Config(void)
 */
 void USART2_Clear(void)
 {
-	memset(usart2_rcv_buf, 0, strlen(usart2_rcv_buf));
+		memset(usart2_rcv_buf, 0, sizeof(usart2_rcv_buf));
     usart2_rcv_len = 0;
 }
 
@@ -94,10 +94,10 @@ void SendCmd(char* cmd, char* result, int timeOut)
     while(1)
     {
         USART2_Clear();
-        USART2_Write(USART2, cmd, strlen(cmd));
+        USART2_Write(USART2, (unsigned char *)cmd, strlen((const char *)cmd));
         mDelay(timeOut);
         printf("%s %d cmd:%s,rsp:%s\n", __func__, __LINE__, cmd, usart2_rcv_buf);
-        if((NULL != strstr(usart2_rcv_buf, result)))	//判断是否有预期的结果
+        if((NULL != strstr((const char *)usart2_rcv_buf, result)))	//判断是否有预期的结果
         {
             break;
         }

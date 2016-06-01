@@ -28,12 +28,12 @@
 #include "usart2.h"
 #include "utils.h"
 #include "Edpkit.h"
-
+#include "esp8266.h"
 
 #define API_KEY     "DXZcCKxqrpxZJKWFnbMzxIjeITk="  //API_KEY 需要修改为用户自己的对应参数
 #define DEV_ID      "1078702"                       //设备ID  需要修改为用户自己的对应参数
-
-
+void sendPkt(EdpPacket **p);
+void Recv_Thread_Func(void);
 /**
   * @brief     实现EDP连接，心跳包保持在线，接收透传消息并返回
   * @attention 使用UART2连接ESP8266模块，使用非透传模式发送和接收数据
@@ -51,8 +51,6 @@ int main(void)
 
     mDelay(2000);			
 
-init:
-
     ESP8266_Init();         //模块初始化，非透传模式
 	
 	/* EDP设备连接包，组包 */
@@ -66,8 +64,8 @@ init:
 	/* 循环检测串口接收数据，每200s发送一包心跳包 */
     while(1)
     {
-		/* 200s发送一次ping包 */
-		if(timeCount >= 2000)
+		/* 间隔一段时间发送一次ping包 */
+		if(timeCount >= 20)
 		{
 			timeCount = 0;
 			

@@ -5,9 +5,8 @@
 #define ADXL345_ADDRESS 0x53
 void ADXL345_init(void)
 {
-    uint8_t data_fmt_val = 0;
-    uint8_t pw_ctl = 0x28, ret = 0;
-    uint8_t int_en = 0x00;
+		uint8_t ret = 0;
+
     uint8_t devid;
 
     //0 ±16g，13位模式
@@ -52,32 +51,11 @@ uint8_t data[6];
   **/
 void ADXL345_GETXYZ(int16_t data_out[3])
 {
-    float f1, f2, f3;
     ADXL345_init(); //每次读写寄存器之前都要先读device ID
 
     Hal_I2C_MutiRead(I2C2, data, ADXL345_ADDRESS, 0x32, 6);
     data_out[0] = (int16_t)(data[0] + ((uint16_t)data[1] << 8));
     data_out[1] = (int16_t)(data[2] + ((uint16_t)data[3] << 8));
     data_out[2] = (int16_t)(data[4] + ((uint16_t)data[5] << 8));
-#if 0
-    if(data_out[0] < 0)
-    {
-        data_out[0] = -data_out[0];
-        f1 = (float)(data_out[0] * 3.9);
-        printf("%s f1  -%f\n", __func__, f1);
-    }
-    if(data_out[1] < 0)
-    {
-        data_out[1] = -data_out[1];
-        f2 = (float)(data_out[1] * 3.9);
-        printf("%s f2 -%f\n", __func__, f2);
-    }
-    if(data_out[2] < 0)
-    {
-        data_out[2] = -data_out[2];
-        f3 = (float)(data_out[2] * 3.9);
-        printf("%s f3- %f\n", __func__, f3);
-    }
-#endif
     printf("ADXL345 ******X=%d,Y=%d,Z=%d*****\n", data_out[0], data_out[1], data_out[2]);
 }

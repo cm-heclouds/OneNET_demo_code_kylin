@@ -82,15 +82,15 @@ void SendCmd(char* cmd, char* result, int timeOut)
 	
     while(1)
     {
-        memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+        memset(usart2_rcv_buf,0,sizeof(usart2_rcv_buf));
 				usart2_rcv_len=0;
 						
-        usart2_write(USART2,cmd,strlen(cmd));
+        usart2_write(USART2,(uint8_t *)cmd,strlen(cmd));
         //mDelay(timeOut);	
 				for(count=0;count<timeOut;count++)
 				{
 						mDelay(100);
-						if((NULL != strstr(usart2_rcv_buf, result)))
+						if((NULL != strstr((const char *)usart2_rcv_buf, (const char *)result)))
 						{
 								break;
 						}
@@ -109,7 +109,7 @@ void ESP8266_DevLink(const char* devid, const char* auth_key, int timeOut)
 {
 		int32 count=0;
 	
-		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+		memset(usart2_rcv_buf,0,strlen((const char *)usart2_rcv_buf));
 		usart2_rcv_len=0;			
 		
 		printf("%s\r\n","[ESP8266_DevLink]ENTER device link...");
@@ -117,7 +117,7 @@ void ESP8266_DevLink(const char* devid, const char* auth_key, int timeOut)
 		for(count=0;count<timeOut;count++)
 		{
 				mDelay(100);
-				if((NULL != strstr(usart2_rcv_buf,">")))
+				if((NULL != strstr((const char *)usart2_rcv_buf,">")))
 				{
 						break;
 				}
@@ -142,7 +142,7 @@ int ESP8266_CheckStatus(int timeOut)
 		int32 res=0;
 		int32 count=0;
 	
-		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+		memset(usart2_rcv_buf,0,sizeof(usart2_rcv_buf));
 		usart2_rcv_len=0;
 		
 		printf("%s\r\n","[ESP8266_CheckStatus]ENTER check status...");
@@ -150,27 +150,27 @@ int ESP8266_CheckStatus(int timeOut)
 		for(count=0;count<timeOut;count++)
 		{
 				mDelay(100);
-				if((NULL != strstr(usart2_rcv_buf,"STATUS:4")))  //失去连接
+				if((NULL != strstr((const char *)usart2_rcv_buf,"STATUS:4")))  //失去连接
 				{
 						res=-4;
 						break;
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"STATUS:3")))  //建立连接
+				else if((NULL != strstr((const char *)usart2_rcv_buf,"STATUS:3")))  //建立连接
 				{
 						res=0;	
 						break;
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"STATUS:2")))  //获得IP
+				else if((NULL != strstr((const char *)usart2_rcv_buf,"STATUS:2")))  //获得IP
 				{
 						res=-2;
 						break;				
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"STATUS:5")))  //物理掉线
+				else if((NULL != strstr((const char *)usart2_rcv_buf,"STATUS:5")))  //物理掉线
 				{
 						res=-5;
 						break;
 				}
-				else if((NULL != strstr(usart2_rcv_buf,"ERROR")))   
+				else if((NULL != strstr((const char *)usart2_rcv_buf,"ERROR")))   
 				{
 						res=-1;
 						break;
@@ -191,14 +191,14 @@ void ESP8266_SendDat(void)
 {		
 		int32 count=0;
 
-		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+		memset(usart2_rcv_buf,0,sizeof(usart2_rcv_buf));
 		usart2_rcv_len=0;			
 		printf("%s\r\n","[ESP8266_SendDat]ENTER Senddata...");
 		usart2_write(USART2,CIPSEND,strlen(CIPSEND));  //向ESP8266发送数据透传指令
 		for(count=0;count<40;count++)
 		{
 				mDelay(100);
-				if((NULL != strstr(usart2_rcv_buf,">")))
+				if((NULL != strstr((const char *)usart2_rcv_buf,">")))
 				{
 						break;
 				}

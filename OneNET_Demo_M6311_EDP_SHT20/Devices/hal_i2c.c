@@ -124,7 +124,7 @@ void Hal_I2C_Init()
   **/
 int8_t Hal_I2C_ByteWrite(I2C_TypeDef* I2Cx, uint16_t i2c_slave_addr, uint8_t regAddr, uint8_t *data)
 {
-    uint16_t tempADD, timeout = 100;
+    uint16_t tempADD;
 
     tempADD = i2c_slave_addr << 1;
     I2C_AcknowledgeConfig(I2Cx, ENABLE);

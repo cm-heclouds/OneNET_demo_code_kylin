@@ -37,9 +37,8 @@ void BH1750FVI_WriteByte(uint8_t WriteAddr, uint8_t *Data)
 
 void BH1750FVI_loop(void)
 {
-    uint8_t data[2];
     BH1750_Init();
-    printf("BH1750 %f\n", Read_BH1750());
+    printf("BH1750 %d\n", Read_BH1750());
 }
 
 /**

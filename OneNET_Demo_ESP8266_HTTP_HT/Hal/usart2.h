@@ -15,3 +15,4 @@ extern unsigned char  usart2_rcv_buf[MAX_RCV_LEN];
 extern volatile unsigned int   usart2_rcv_len;
 void SendCmd(char* cmd, char* result, int timeOut);
 #endif
+

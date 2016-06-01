@@ -13,7 +13,7 @@
 #define CWMODE      "AT+CWMODE=3\r\n"
 #define RST         "AT+RST\r\n"
 #define CIFSR       "AT+CIFSR\r\n"
-#define CWJAP       "AT+CWJAP=\"ONENET\",\"\"\r\n"
+#define CWJAP       "AT+CWJAP=\"onenet\",\"\"\r\n"
 #define CIPSTART    "AT+CIPSTART=\"TCP\",\"183.230.40.39\",876\r\n"
 #define MODBUS_CIPSTART    "AT+CIPSTART=\"TCP\",\"183.230.40.42\",987\r\n"
 #define MQTT_CIPSTART    "AT+CIPSTART=\"TCP\",\"183.230.40.39\",6002\r\n"

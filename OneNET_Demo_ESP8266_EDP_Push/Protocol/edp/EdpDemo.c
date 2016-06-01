@@ -96,7 +96,7 @@ char *uartDataParse(char *buffer, int32_t *plen)
         p = strstr(p, ":"); //指向长度字段末尾
         *(p++) = '\0';      //长度字段末尾添加结束符，p指向服务器下发的第一个字节
         printf("rcv %d data from OneNET:\r\n", (len = atoi(pnum)));
-        hexdump(p, len);    //打印接收数据
+        hexdump((const unsigned char *)p, len);    //打印接收数据
         *plen = len;
         return p;
     }
@@ -118,7 +118,6 @@ void Recv_Thread_Func(void)
     uint8_t buffer[128] = {0};
     RecvBuffer *recv_buf = NewBuffer();
     EdpPacket *pkg;
-	int32_t len = 0;
 
     char *src_devid;
     char *push_data;
@@ -139,10 +138,6 @@ void Recv_Thread_Func(void)
     double dValue = 0;
 
     char *simple_str = NULL;
-    char cmd_resp[] = "ok";
-    unsigned cmd_resp_len = 0;
-
-    //printf("\n[%s] recv thread start ...\r\n", __func__);
 
     if (error == 0)
     {
@@ -163,7 +158,7 @@ void Recv_Thread_Func(void)
         //hexdump(buffer, usart2_rcv_len);   //打印接收数据
 
         /* 串口数据分析，区分WIFI模块的推送信息与服务器的下发信息 */
-        if((p = uartDataParse(buffer, &rcv_len)) == NULL)
+        if((p = uartDataParse((char *)buffer, &rcv_len)) == NULL)
         {
             //printf("No server Data\r\n");
             goto quit;	//退出 if (error == 0)

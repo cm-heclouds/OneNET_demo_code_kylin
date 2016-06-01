@@ -117,7 +117,7 @@ void Process_Cmd(uint8_t * buf, int32_t len)
             break;
     }
     /*返回命令响应数据*/
-    USART2_SendData(rsp_buf, rsp_len);
+    USART2_SendData((int8_t*)rsp_buf, rsp_len);
     printf("%s send  %d bytes to server\n", __func__, rsp_len);
 }
 
@@ -203,5 +203,5 @@ void Insert_Crc16(uint8_t *buf, int32_t len_to_calc)
         *tmp++ = prvucMBBIN2CHAR((buf[i]) & 0x0F);  //low byte
         i++;
     }
-    printf("send data rsp:%s,%d\n", test_buf, strlen(test_buf));
+    printf("send data rsp:%s,%d\n", test_buf, strlen((const char *)test_buf));
 }

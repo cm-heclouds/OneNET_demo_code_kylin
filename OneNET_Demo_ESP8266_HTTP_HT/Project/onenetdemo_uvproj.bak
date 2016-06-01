@@ -566,19 +566,9 @@
               <FilePath>..\Hal\usart1.c</FilePath>
             </File>
             <File>
-              <FileName>usart1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hal\usart1.h</FilePath>
-            </File>
-            <File>
               <FileName>usart2.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hal\usart2.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hal\usart2.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -600,11 +590,6 @@
               <FileType>1</FileType>
               <FilePath>..\Utils\utils.c</FilePath>
             </File>
-            <File>
-              <FileName>utils.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Utils\utils.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -614,11 +599,6 @@
               <FileName>esp8266.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Network\esp8266\esp8266.c</FilePath>
-            </File>
-            <File>
-              <FileName>esp8266.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Network\esp8266\esp8266.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -337,12 +337,12 @@ struct DataPointPktInfo *Mqtt_GetDataPointPktInfo(struct MqttBuffer *buf)
         return NULL;
     }
 
-    if(!(fix_head->next) || !(first_payload = fix_head->next->next) ||
+    if(!(fix_head->next) || !(fix_head->next->next) ||
        (MQTT_DPTYPE_TRIPLE != first_payload->payload[0]))
     {
         return NULL;
     }
-
+		first_payload = fix_head->next->next;
     if(first_payload->len != 2 + sizeof(struct DataPointPktInfo))
     {
         return NULL;
@@ -758,7 +758,7 @@ int Mqtt_HandleUnsubAck(struct MqttContext *ctx, char flags,
     return ctx->handle_unsub_ack(ctx->handle_unsub_ack_arg, pkt_id);
 }
 
-static int Mqtt_Dispatch(struct MqttContext *ctx, char fh,  unsigned char *pkt, size_t size)
+static int Mqtt_Dispatch(struct MqttContext *ctx, char fh,  char *pkt, size_t size)
 {
     const char flags = fh & 0x0F;
     switch(((uint8_t)fh) >> 4)
@@ -824,10 +824,10 @@ int Mqtt_RecvPkt(struct MqttContext *ctx)
 {
     int bytes;
     uint32_t remaining_len = 0;
-    unsigned char *pkt, *cursor;
+   
     int length_sec_bytes = 0;
     int errcode = -1;
-    cursor = ctx->bgn;
+   
     bytes = ctx->read_func(ctx->pos);
     if(0 == bytes)
     {
@@ -840,9 +840,9 @@ int Mqtt_RecvPkt(struct MqttContext *ctx)
         return MQTTERR_IO;
     }
 
-    length_sec_bytes = Mqtt_ReadLength(ctx->pos + 1, bytes - 1, &remaining_len);
+    length_sec_bytes = Mqtt_ReadLength((const char *)(ctx->pos + 1), bytes - 1, &remaining_len);
 
-    errcode = Mqtt_Dispatch(ctx, ctx->pos[0], ctx->pos + length_sec_bytes + 1, remaining_len);
+    errcode = Mqtt_Dispatch(ctx, ctx->pos[0], ( char *)(ctx->pos + length_sec_bytes + 1), remaining_len);
     if(errcode < 0)
     {
         printf("%s %d errcode=%d\n", __func__, __LINE__, errcode);
@@ -1598,8 +1598,7 @@ int Mqtt_PackDataPointStartNormal(struct MqttBuffer *buf, unsigned char *topic, 
                                   enum MqttQosLevel qos, int retain, int save)
 {
     int err;
-    struct MqttExtent *ext;
-
+  
     if((buf->first_ext) || (topic == NULL))
     {
         return MQTTERR_INVALID_PARAMETER;

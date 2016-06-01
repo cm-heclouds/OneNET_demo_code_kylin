@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>OneNET_demo_ESP8266_bin</TargetName>
+      <TargetName>OneNET_demo_ESP8266_Picture</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>

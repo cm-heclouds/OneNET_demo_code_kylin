@@ -43,6 +43,7 @@
   *	            使用UART1作为调试打印串口，使用printf将从该接口打印消息
   *			
   */
+uint32_t HTTP_PostPkt(char *pkt, char *key, char *devid, char *dsid, char *val);
 int main(void)
 {
     uint16_t temp, humi;    //温湿度
@@ -55,9 +56,8 @@ int main(void)
     USART2_Config();        //USART2用于连接ESP8266模块
     Hal_I2C_Init();			//I2C初始化，用于连接温湿度传感器
 
-init:
     ESP8266_Init();         //ESP8266初始化
-	printf("ESP8266 init over\r\n");
+		printf("ESP8266 init over\r\n");
     //SHT20_loop();         //
 	
     while(1)

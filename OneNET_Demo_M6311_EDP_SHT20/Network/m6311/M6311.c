@@ -1,5 +1,5 @@
 #include "m6311.h"
-
+#include "usart2.h"
 /**
   * @brief  初始化M6311，并配置路由器和连接服务器
   * @param  server:按AT命令配置的服务器地址和端口字符串
@@ -46,11 +46,11 @@ void M6311_Init(void)
   **/
 int32_t M6311_SendData(uint8_t * buf,uint32_t len)
 {
-	int32_t ret=0,i=0;
-	memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+	memset(usart2_rcv_buf,0,strlen((const char *)usart2_rcv_buf));
 	usart2_rcv_len=0;
 	USART2_Write(USART2,buf,len);	
 	mDelay(20);	
+	return len;
 }
 
 /**

@@ -20,15 +20,15 @@ void SendCmd(char* cmd, char* result, int timeOut)
     int i=0;
 		while(1)
     {
-        memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+        memset(usart2_rcv_buf,0,sizeof(usart2_rcv_buf));
 				usart2_rcv_len=0;
 						
-        usart2_write(USART2,cmd,strlen(cmd));
+        usart2_write(USART2,(uint8_t*)cmd,strlen(cmd));
 				for(i=0;i<timeOut;i++)
 				{
 						Delay(100);
        	}	
-        if((NULL != strstr(usart2_rcv_buf, result)))
+        if((NULL != strstr((const char *)usart2_rcv_buf, (const char *)result)))
         {
             break;
         }
@@ -45,7 +45,7 @@ void SendCmd(char* cmd, char* result, int timeOut)
 void EMW3081_Reboot(void)
 {
 		printf("%s\r\n","[EMW3081_Reboot]ENTER Reboot.");
-		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+		memset(usart2_rcv_buf,0,sizeof(usart2_rcv_buf));
 		usart2_rcv_len=0;
 		usart2_write(USART2,REBOOT,strlen(REBOOT));
 		Delay(5000);
@@ -57,27 +57,27 @@ void EMW3081_Reboot(void)
 **/
 void EMW3081_SendBinDat(void)
 {
-		char text[50]="AT+CIOTBINSEND=1023,";
-		char text1[50]="AT+CIOTBINSEND=521,";
+		uint8_t text[50]="AT+CIOTBINSEND=1023,";
+		uint8_t text1[50]="AT+CIOTBINSEND=521,";
 
-		memset(usart2_rcv_buf,0,strlen(usart2_rcv_buf));
+		memset(usart2_rcv_buf,0,sizeof(usart2_rcv_buf));
 		usart2_rcv_len=0;
 	  printf("%s\r\n","[EMW3081_SendBinDat]start SendBinDat...");
 		usart2_write(USART2,CIOTBINSET,strlen(CIOTBINSET));
 		Delay(1000);
 				
-		usart2_write(USART2,text,20);
-		usart2_write(USART2,dat1,1023);
+		usart2_write(USART2,(uint8_t *)text,20);
+		usart2_write(USART2,(uint8_t *)dat1,1023);
 		USART_SendData(USART2,'\r');
 		Delay(500);
 		
-		usart2_write(USART2,text,20);
-		usart2_write(USART2,dat2,1023);
+		usart2_write(USART2,(uint8_t *)text,20);
+		usart2_write(USART2,(uint8_t *)dat2,1023);
 		USART_SendData(USART2,'\r');
 		Delay(500);
 	
-		usart2_write(USART2,text,20);
-		usart2_write(USART2,dat3,1023);
+		usart2_write(USART2,(uint8_t *)text,20);
+		usart2_write(USART2,(uint8_t *)dat3,1023);
 		USART_SendData(USART2,'\r');
 		Delay(500);
 	

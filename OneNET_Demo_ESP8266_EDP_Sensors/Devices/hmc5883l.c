@@ -3,7 +3,7 @@
 #include "hal_i2c.h"
 #include "stdio.h"
 #include "hmc5883l.h"
-
+#include "utils.h"
 #define HMC5883L_ADDR 0x1e
 
 /* 从HMC5883L的指定地址开始读出一个字节 */

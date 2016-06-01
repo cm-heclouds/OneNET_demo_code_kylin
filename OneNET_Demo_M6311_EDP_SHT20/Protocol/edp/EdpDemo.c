@@ -105,7 +105,7 @@ void Save_TempHumToOneNet(void)
     SHT2x_MeasureHM(SHT20_Measurement_T_HM, temperature);
     printf("%s %d hum:%d\n", __func__, __LINE__, (uint32_t)hum[0]);
     printf("%s %d t:%d\n", __func__, __LINE__, (uint32_t)temperature[0]);
-    snprintf(data_string_dst, sizeof(data_string), data_string, (uint32_t)temperature[0], (uint32_t)hum[0]);
+    snprintf((char *)data_string_dst, sizeof(data_string), (char *)data_string, (uint32_t)temperature[0], (uint32_t)hum[0]);
     printf("%s %d t:%s\n", __func__, __LINE__, data_string_dst);
     send_pkg = PacketSavedataSimpleString(NULL, data_string_dst);
 
@@ -113,10 +113,7 @@ void Save_TempHumToOneNet(void)
     DeleteBuffer(&send_pkg);
     mDelay(1000);
 }
-static uint8_t con[]={
-0x10,0x2F,0x00,0x03,0x45,0x44,0x50,0x01,0x40,0x00,0x80,0x00,0x06,0x37,0x36,0x38,0x35,0x39,0x36,0x00,0x1C,0x6E,0x43
-,0x56,0x4E,0x58,0x59,0x43,0x6F,0x58,0x36,0x38,0x49,0x48,0x47,0x34,0x44,0x67,0x70,0x79,0x4E,0x75,0x35,0x61,0x54,0x58,0x66,0x59,0x3D};
-	
+
 /*
  *  @brief  EDP协议测试主循环
  */
@@ -126,7 +123,7 @@ void EDP_Loop(void)
     mDelay(2000);
     while(1)
     {   
-			  memset(usart2_rcv_buf, 0, strlen(usart2_rcv_buf));
+			  memset(usart2_rcv_buf, 0, strlen((const char *)usart2_rcv_buf));
         usart2_rcv_len = 0;
         Connect_RequestType1(src_dev, src_api_key);
         mDelay(200);
@@ -271,7 +268,7 @@ void Recv_Thread_Func(void)
 
                             UnpackSavedataDouble(jsonorbin,
                                                  pkg,
-                                                 &ds_id,
+                                                 (char **)&ds_id,
                                                  &dValue);
                             printf
                             ("ds_id = %s\nvalue = %f\n",
@@ -289,7 +286,7 @@ void Recv_Thread_Func(void)
                                               (uint8_t **) &
                                               save_bin,
                                               &save_binlen);
-                            desc_json_str =
+                            desc_json_str =(int8_t*)
                                 cJSON_Print(desc_json);
                             printf
                             ("recv save data bin, src_devid: %s, desc json: %s, bin: %s, binlen: %d\n",
@@ -328,7 +325,7 @@ void Recv_Thread_Func(void)
                          * 用户按照自己的需求处理并返回，响应消息体可以为空，此处假设返回2个字符"ok"。
                          * 处理完后需要释放
                          */
-                        cmd_resp_len = strlen(cmd_resp);
+                        cmd_resp_len = strlen((const char *)cmd_resp);
                         send_pkg =
                             PacketCmdResp(cmdid, cmdid_len,
                                           cmd_resp,
@@ -373,7 +370,7 @@ void Connect_RequestType1(int8_t *devid, int8_t *api_key)
 {
     EdpPacket *send_pkg;
 
-    send_pkg = PacketConnect1((const int8_t *)devid, (const int8_t *)api_key);
+    send_pkg = PacketConnect1(devid, api_key);
     if(send_pkg == NULL)
     {
         return;

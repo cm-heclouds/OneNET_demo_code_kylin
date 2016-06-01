@@ -41,7 +41,7 @@ void my_assert(int a)
 
 #define MKFUN_PACKET_SAVE_DATA_TYPE1(TYPE, NAME, MED)           \
     static EdpPacket* PacketSavedataType1##NAME(const char* dst_devid,  \
-                        const char* ds_id,  \
+                        const char * ds_id,  \
                         TYPE value,     \
                         time_t at,      \
                         const char* token){ \
@@ -76,7 +76,7 @@ void my_assert(int a)
     cJSON_AddItemToArray(ds_array, json_obj_ds);            \
     cJSON_AddItemToObject(json_obj, "datastreams", ds_array);   \
                                     \
-    pkg = PacketSavedataJson(dst_devid, json_obj,           \
+    pkg = PacketSavedataJson((const int8_t*)dst_devid, json_obj,           \
                         kTypeFullJson);     \
     cJSON_Delete(json_obj);                     \
                                     \
@@ -96,7 +96,7 @@ void my_assert(int a)
     json_obj = cJSON_CreateObject();                \
     cJSON_Add##MED##ToObject(json_obj, ds_id, value);       \
                                     \
-    pkg = PacketSavedataJson(dst_devid, json_obj,           \
+    pkg = PacketSavedataJson((const int8_t*)dst_devid, json_obj,           \
                         kTypeSimpleJsonWithoutTime); \
     cJSON_Delete(json_obj);                     \
                                     \
@@ -121,7 +121,7 @@ void my_assert(int a)
     cJSON_Add##MED##ToObject(json_obj_ds, ss, value);       \
     cJSON_AddItemToObject(json_obj, ds_id, json_obj_ds);        \
                                     \
-    pkg = PacketSavedataJson(dst_devid, json_obj,           \
+    pkg = PacketSavedataJson((const int8_t*)dst_devid, json_obj,           \
                         kTypeSimpleJsonWithTime);   \
     cJSON_Delete(json_obj);                     \
                                     \
@@ -391,9 +391,9 @@ int32_t ReadStr(EdpPacket* pkg, int8_t** val)
     if (pkg->_read_pos + len > pkg->_write_pos)
         return -1;
     /* copy str val */
-    *val = (char*)malloc(sizeof(char) * (len + 1));
+    *val = malloc(sizeof(char) * (len + 1));
     memset(*val, 0, len + 1);
-    strncpy(*val, (const char *)(pkg->_data + pkg->_read_pos), len);
+    strncpy((char *)*val, (const char *)(pkg->_data + pkg->_read_pos), len);
     pkg->_read_pos += len;
     return 0;
 }
@@ -455,11 +455,11 @@ int32_t WriteUint32(Buffer* buf, uint32_t val)
            || WriteByte(buf, (val >> 8) & 0x00FF)
            || WriteByte(buf, (val) & 0x00FF);
 }
-int32_t WriteStr(Buffer* buf, const char *str)
+int32_t WriteStr(Buffer* buf, const int8_t *str)
 {
     uint16_t length = 0;
     my_assert(buf->_read_pos == 0);
-    length = strlen(str);
+    length = strlen((const char *)str);
     return WriteUint16(buf, length)
            || WriteBytes(buf, str, length);
 }
@@ -489,7 +489,7 @@ int32_t WriteRemainlen(Buffer* buf, uint32_t len_val)
 }
 /*---------------------------------------------------------------------------*/
 /* connect1 (C->S): devid + apikey */
-EdpPacket* PacketConnect1(const char* devid, const char* auth_key)
+EdpPacket* PacketConnect1(const int8_t* devid, const int8_t* auth_key)
 {
     uint32_t remainlen;
     EdpPacket* pkg = NewBuffer();
@@ -501,7 +501,7 @@ EdpPacket* PacketConnect1(const char* devid, const char* auth_key)
     /* msg type */
     WriteByte(pkg, CONNREQ);
     /* remain len */
-    remainlen = (2 + 3) + 1 + 1 + 2 + (2 + strlen(devid)) + (2 + strlen(auth_key));
+    remainlen = (2 + 3) + 1 + 1 + 2 + (2 + strlen((const char *)devid)) + (2 + strlen((const char *)auth_key));
     WriteRemainlen(pkg, remainlen);
     /* protocol desc */
     WriteStr(pkg, PROTOCOL_NAME);
@@ -518,7 +518,7 @@ EdpPacket* PacketConnect1(const char* devid, const char* auth_key)
     return pkg;
 }
 /* connect2 (C->S): userid + auth_info */
-EdpPacket* PacketConnect2(const char* userid, const char* auth_info)
+EdpPacket* PacketConnect2(const int8_t* userid, const int8_t* auth_info)
 {
     EdpPacket* pkg = NULL;
     uint32_t remainlen;
@@ -527,7 +527,7 @@ EdpPacket* PacketConnect2(const char* userid, const char* auth_info)
     /* msg type */
     WriteByte(pkg, CONNREQ);
     /* remain len */
-    remainlen = (2 + 3) + 1 + 1 + 2 + 2 + (2 + strlen(userid)) + (2 + strlen(auth_info));
+    remainlen = (2 + 3) + 1 + 1 + 2 + 2 + (2 + strlen((const char *)userid)) + (2 + strlen((const char *)auth_info));
     WriteRemainlen(pkg, remainlen);
     /* protocol desc */
     WriteStr(pkg, PROTOCOL_NAME);
@@ -547,7 +547,7 @@ EdpPacket* PacketConnect2(const char* userid, const char* auth_info)
     return pkg;
 }
 /* push_data (C->S) */
-EdpPacket* PacketPushdata(const char* dst_devid, const char* data, uint32_t data_len)
+EdpPacket* PacketPushdata(const int8_t* dst_devid, const int8_t* data, uint32_t data_len)
 {
     EdpPacket* pkg = NULL;
     uint32_t remainlen;
@@ -556,7 +556,7 @@ EdpPacket* PacketPushdata(const char* dst_devid, const char* data, uint32_t data
     /* msg type */
     WriteByte(pkg, PUSHDATA);
     /* remain len */
-    remainlen = (2 + strlen(dst_devid)) + data_len;
+    remainlen = (2 + strlen((const char *)dst_devid)) + data_len;
     WriteRemainlen(pkg, remainlen);
     /* dst devid */
     WriteStr(pkg, dst_devid);
@@ -565,23 +565,23 @@ EdpPacket* PacketPushdata(const char* dst_devid, const char* data, uint32_t data
     return pkg;
 }
 /* sava_data (C->S) */
-EdpPacket* PacketSavedataJson(const char* dst_devid, cJSON* json_obj, int32_t type)
+EdpPacket* PacketSavedataJson(const int8_t* dst_devid, cJSON* json_obj, int32_t type)
 {
     EdpPacket* pkg = NULL;
     uint32_t remainlen = 0;
-    char* json_out = NULL;
+    int8_t* json_out = NULL;
     uint32_t json_len = 0;
 
     pkg = NewBuffer();
-    json_out = cJSON_Print(json_obj);
-    json_len = strlen(json_out);
+    json_out =(int8_t *) cJSON_Print(json_obj);
+    json_len = strlen((const char *)json_out);
 
     /* msg type */
     WriteByte(pkg, SAVEDATA);
     if (dst_devid)
     {
         /* remain len */
-        remainlen = 1 + (2 + strlen(dst_devid)) + 1 + (2 + json_len);
+        remainlen = 1 + (2 + strlen((const char *)dst_devid)) + 1 + (2 + json_len);
         WriteRemainlen(pkg, remainlen);
         /* translate address flag */
         WriteByte(pkg, 0x80);
@@ -651,7 +651,7 @@ MKFUN_UNPACK_SAVE_DATA(int, Int)
 MKFUN_UNPACK_SAVE_DATA(double, Double)
 MKFUN_UNPACK_SAVE_DATA(char*, String)
 
-int32_t UnpackSavedataAck(EdpPacket* pkg, char** json_ack)
+int32_t UnpackSavedataAck(EdpPacket* pkg, int8_t** json_ack)
 {
     uint32_t remainlen = 0;
     uint8_t flag = 0;
@@ -673,17 +673,17 @@ int32_t UnpackSavedataAck(EdpPacket* pkg, char** json_ack)
 }
 
 /* sava_data bin (C->S) */
-EdpPacket* PacketSavedataBin(const char* dst_devid,
+EdpPacket* PacketSavedataBin(const int8_t* dst_devid,
                              cJSON* desc_obj, const uint8_t* bin_data, uint32_t bin_len)
 {
     EdpPacket* pkg = NULL;
     uint32_t remainlen = 0;
-    char* desc_out = NULL;
+    int8_t* desc_out = NULL;
     uint32_t desc_len = 0;
 
     /* check arguments */
-    desc_out = cJSON_Print(desc_obj);
-    desc_len = strlen(desc_out);
+    desc_out =( int8_t*)cJSON_Print(desc_obj);
+    desc_len = strlen((const char *)desc_out);
     if (desc_len > (0x01 << 16) || bin_len > (3 * (0x01 << 20))
         /* desc < 2^16 && bin_len < 3M*/
         || cJSON_GetObjectItem(desc_obj, "ds_id") == 0)
@@ -698,7 +698,7 @@ EdpPacket* PacketSavedataBin(const char* dst_devid,
     if (dst_devid)
     {
         /* remain len */
-        remainlen = 1 + (2 + strlen(dst_devid)) + 1 + (2 + desc_len) + (4 + bin_len);
+        remainlen = 1 + (2 + strlen((const char *)dst_devid)) + 1 + (2 + desc_len) + (4 + bin_len);
         WriteRemainlen(pkg, remainlen);
         /* translate address flag */
         WriteByte(pkg, 0x80);
@@ -724,15 +724,15 @@ EdpPacket* PacketSavedataBin(const char* dst_devid,
     return pkg;
 }
 
-EdpPacket* PacketSavedataBinStr(const char* dst_devid,
-                                const char* desc_str, const uint8_t* bin_data, uint32_t bin_len)
+EdpPacket* PacketSavedataBinStr(const int8_t* dst_devid,
+                                const int8_t* desc_str, const uint8_t* bin_data, uint32_t bin_len)
 {
     EdpPacket* pkg = NULL;
     uint32_t remainlen = 0;
     uint32_t desc_len = 0;
 
     /* check arguments */
-    desc_len = strlen(desc_str);
+    desc_len = strlen((const char *)desc_str);
     if (desc_len > (0x01 << 16) || bin_len > (3 * (0x01 << 20)))
     {
         /* desc < 2^16 && bin_len < 3M*/
@@ -744,7 +744,7 @@ EdpPacket* PacketSavedataBinStr(const char* dst_devid,
     if (dst_devid)
     {
         /* remain len */
-        remainlen = 1 + (2 + strlen(dst_devid)) + 1 + (2 + desc_len) + (4 + bin_len);
+        remainlen = 1 + (2 + strlen((const char *)dst_devid)) + 1 + (2 + desc_len) + (4 + bin_len);
         WriteRemainlen(pkg, remainlen);
         /* translate address flag */
         WriteByte(pkg, 0x80);
@@ -769,8 +769,8 @@ EdpPacket* PacketSavedataBinStr(const char* dst_devid,
     return pkg;
 }
 
-EdpPacket* PacketCmdResp(const char* cmdid, uint16_t cmdid_len,
-                         const char* resp, uint32_t resp_len)
+EdpPacket* PacketCmdResp(const int8_t* cmdid, uint16_t cmdid_len,
+                         const int8_t* resp, uint32_t resp_len)
 {
     EdpPacket* send_pkg = NULL;
     unsigned remainlen = 0;
@@ -895,14 +895,14 @@ int32_t UnpackConnectResp(EdpPacket* pkg)
     return (int32_t)rtn;
 }
 /* push_data (S->C) */
-int32_t UnpackPushdata(EdpPacket* pkg, char** src_devid, char** data, uint32_t* data_len)
+int32_t UnpackPushdata(EdpPacket* pkg, int8_t** src_devid, int8_t** data, uint32_t* data_len)
 {
     uint32_t remainlen;
     if (ReadRemainlen(pkg, &remainlen))
         return ERR_UNPACK_PUSHD_REMAIN;
     if (ReadStr(pkg, src_devid))
         return ERR_UNPACK_PUSHD_DEVID;
-    remainlen -= (2 + strlen(*src_devid));
+    remainlen -= (2 + strlen((const char *)(*src_devid)));
     if (ReadBytes(pkg, (uint8_t**)data, remainlen))
         return ERR_UNPACK_PUSHD_DATA;
     *data_len = remainlen;
@@ -910,7 +910,7 @@ int32_t UnpackPushdata(EdpPacket* pkg, char** src_devid, char** data, uint32_t* 
     return 0;
 }
 /* save_data (S->C) */
-int32_t UnpackSavedata(EdpPacket* pkg, char** src_devid, uint8_t* jb_flag)
+int32_t UnpackSavedata(EdpPacket* pkg, int8_t** src_devid, uint8_t* jb_flag)
 {
     uint32_t remainlen;
     uint8_t ta_flag;
@@ -935,10 +935,10 @@ int32_t UnpackSavedata(EdpPacket* pkg, char** src_devid, uint8_t* jb_flag)
 }
 int32_t UnpackSavedataJson(EdpPacket* pkg, cJSON** json_obj)
 {
-    char* json_str;
+    int8_t* json_str;
     if (ReadStr(pkg, &json_str))
         return ERR_UNPACK_SAVED_JSON;
-    *json_obj = cJSON_Parse(json_str);
+    *json_obj = cJSON_Parse((const char *)json_str);
     free(json_str);
     if (*json_obj == 0)
         return ERR_UNPACK_SAVED_PARSEJSON;
@@ -949,10 +949,10 @@ int32_t UnpackSavedataJson(EdpPacket* pkg, cJSON** json_obj)
 int32_t UnpackSavedataBin(EdpPacket* pkg, cJSON** desc_obj,
                           uint8_t** bin_data, uint32_t* bin_len)
 {
-    char* desc_str;
+    int8_t* desc_str;
     if (ReadStr(pkg, &desc_str))
         return ERR_UNPACK_SAVED_BIN_DESC;
-    *desc_obj = cJSON_Parse(desc_str);
+    *desc_obj = cJSON_Parse((const char *)desc_str);
     free(desc_str);
     if (*desc_obj == 0)
         return ERR_UNPACK_SAVED_PARSEDESC;
@@ -964,7 +964,7 @@ int32_t UnpackSavedataBin(EdpPacket* pkg, cJSON** desc_obj,
     return 0;
 }
 
-int32_t UnpackSavedataBinStr(EdpPacket* pkg, char** desc_str,
+int32_t UnpackSavedataBinStr(EdpPacket* pkg, int8_t** desc_str,
                              uint8_t** bin_data, uint32_t* bin_len)
 {
     if (ReadStr(pkg, desc_str))
@@ -976,11 +976,11 @@ int32_t UnpackSavedataBinStr(EdpPacket* pkg, char** desc_str,
     my_assert(pkg->_read_pos == pkg->_write_pos);
     return 0;
 }
-int32_t UnpackCmdReq(EdpPacket* pkg, char** cmdid, uint16_t* cmdid_len,
-                     char** req, uint32_t* req_len)
+int32_t UnpackCmdReq(EdpPacket* pkg, int8_t** cmdid, uint16_t* cmdid_len,
+                     int8_t** req, uint32_t* req_len)
 {
     uint32 remainlen;
-    int rc;
+    int32_t rc;
     if (ReadRemainlen(pkg, &remainlen))
         return ERR_UNPACK_CMDREQ;
 
@@ -1011,20 +1011,20 @@ int32_t UnpackPingResp(EdpPacket* pkg)
 }
 
 /* sava_data (C->S) */
-EdpPacket* PacketSavedataSimpleString(const char* dst_devid, const char* input)
+EdpPacket* PacketSavedataSimpleString(const int8_t* dst_devid, const int8_t* input)
 {
     EdpPacket* pkg = NULL;
     uint32 remainlen = 0;
     uint32 input_len = 0;
 
     pkg = NewBuffer();
-    input_len = strlen(input);
+    input_len = strlen((const char *)input);
     /* msg type */
     WriteByte(pkg, SAVEDATA);
     if (dst_devid)
     {
         /* remain len */
-        remainlen = 1 + (2 + strlen(dst_devid)) + 1 + (2 + input_len);
+        remainlen = 1 + (2 + strlen((const char *)dst_devid)) + 1 + (2 + input_len);
         WriteRemainlen(pkg, remainlen);
         /* translate address flag */
         WriteByte(pkg, 0x80);
@@ -1047,7 +1047,7 @@ EdpPacket* PacketSavedataSimpleString(const char* dst_devid, const char* input)
     return pkg;
 }
 
-int32_t UnpackSavedataSimpleString(EdpPacket* pkg, char** output)
+int32_t UnpackSavedataSimpleString(EdpPacket* pkg, int8_t** output)
 {
     if (ReadStr(pkg, output))
         return ERR_UNPACK_SAVED_JSON;

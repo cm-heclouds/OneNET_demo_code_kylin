@@ -3,9 +3,1262 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-E:\workspace\workspace\OneNET_demo_code_kylin\OneNET_Demo_ESP8266_EDP_Sensors\Project\onenetdemo.uvproj
-Project File Date:  04/11/2016
+F:\OneNET_demo_code_kylin\OneNET_demo_code_kylin\OneNET_Demo_ESP8266_EDP_Sensors\Project\onenetdemo.uvproj
+Project File Date:  06/01/2016
 
 <h2>Output:</h2>
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_adc.c...
+compiling stm32f10x_bkp.c...
+compiling stm32f10x_can.c...
+compiling stm32f10x_cec.c...
+compiling stm32f10x_crc.c...
+compiling stm32f10x_dac.c...
+compiling stm32f10x_dbgmcu.c...
+compiling stm32f10x_dma.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_fsmc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_iwdg.c...
+compiling stm32f10x_pwr.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_rtc.c...
+compiling stm32f10x_sdio.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_wwdg.c...
+compiling hal_i2c.c...
+..\Devices\hal_i2c.c(127): warning:  #177-D: variable "timeout" was declared but never referenced
+compiling sht20.c...
+..\Devices\sht20.c(61): warning:  #68-D: integer conversion resulted in a change of sign
+..\Devices\sht20.c(92): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+..\Devices\adxl345.c(8): warning:  #177-D: variable "data_fmt_val" was declared but never referenced
+..\Devices\adxl345.c(9): warning:  #177-D: variable "pw_ctl" was declared but never referenced
+..\Devices\adxl345.c(10): warning:  #177-D: variable "int_en" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f1" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f2" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f3" was declared but never referenced
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(42): warning:  #181-D: argument is incompatible with corresponding format string conversion
+..\Devices\bh1750fvi.c(40): warning:  #177-D: variable "data" was declared but never referenced
+compiling hmc5883l.c...
+..\Devices\hmc5883l.c(42): warning:  #223-D: function "mDelay" declared implicitly
+..\Devices\hmc5883l.c(67): warning:  #1-D: last line of file ends without a newline
+compiling usart1.c...
+compiling usart2.c...
+..\Hal\usart2.c(77): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Hal\usart2.c(80): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Hal\usart2.c(80): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+..\Hal\usart2.c(81): warning:  #223-D: function "mDelay" declared implicitly
+..\Hal\usart2.c(83): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Hal\usart2.c(83): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Hal\usart2.c(110): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(33): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(135): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(136): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(141): warning:  #223-D: function "ADXL345_GETXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(142): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(146): warning:  #223-D: function "HMC5883L_GetXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(148): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(287): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(309): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(311): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(329): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(342): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(355): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(368): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(370): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(371): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(394): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpKit.c(396): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(903): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(924): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(939): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(953): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(970): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(1052): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(21): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(25): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(39): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+..\Network\esp8266\esp8266.c(43): warning:  #940-D: missing return statement at end of non-void function "ESP8266_SendData"
+linking...
+Program Size: Code=32748 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 83 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling usart2.c...
+..\Hal\usart2.c(77): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Hal\usart2.c(80): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Hal\usart2.c(80): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+..\Hal\usart2.c(81): warning:  #223-D: function "mDelay" declared implicitly
+..\Hal\usart2.c(83): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Hal\usart2.c(83): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+linking...
+Program Size: Code=32740 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 6 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling usart2.c...
+linking...
+Program Size: Code=32740 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_adc.c...
+compiling stm32f10x_bkp.c...
+compiling stm32f10x_can.c...
+compiling stm32f10x_cec.c...
+compiling stm32f10x_crc.c...
+compiling stm32f10x_dac.c...
+compiling stm32f10x_dbgmcu.c...
+compiling stm32f10x_dma.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_fsmc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_iwdg.c...
+compiling stm32f10x_pwr.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_rtc.c...
+compiling stm32f10x_sdio.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_wwdg.c...
+compiling hal_i2c.c...
+..\Devices\hal_i2c.c(127): warning:  #177-D: variable "timeout" was declared but never referenced
+compiling sht20.c...
+..\Devices\sht20.c(61): warning:  #68-D: integer conversion resulted in a change of sign
+..\Devices\sht20.c(92): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+..\Devices\adxl345.c(8): warning:  #177-D: variable "data_fmt_val" was declared but never referenced
+..\Devices\adxl345.c(9): warning:  #177-D: variable "pw_ctl" was declared but never referenced
+..\Devices\adxl345.c(10): warning:  #177-D: variable "int_en" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f1" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f2" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f3" was declared but never referenced
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(42): warning:  #181-D: argument is incompatible with corresponding format string conversion
+..\Devices\bh1750fvi.c(40): warning:  #177-D: variable "data" was declared but never referenced
+compiling hmc5883l.c...
+..\Devices\hmc5883l.c(42): warning:  #223-D: function "mDelay" declared implicitly
+..\Devices\hmc5883l.c(67): warning:  #1-D: last line of file ends without a newline
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(33): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(135): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(136): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(141): warning:  #223-D: function "ADXL345_GETXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(142): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(146): warning:  #223-D: function "HMC5883L_GetXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(148): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(287): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(309): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(311): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(329): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(342): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(355): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(368): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(370): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(371): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(394): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpKit.c(396): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(903): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(924): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(939): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(953): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(970): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(1052): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(21): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(25): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(39): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+..\Network\esp8266\esp8266.c(43): warning:  #940-D: missing return statement at end of non-void function "ESP8266_SendData"
+linking...
+Program Size: Code=32740 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 76 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+linking...
+..\object\onenetdemo.axf: Error: L6218E: Undefined symbol RCC_APB2PeriphResetCmd (referred from stm32f10x_gpio.o).
+..\object\onenetdemo.axf: Error: L6218E: Undefined symbol RCC_APB1PeriphResetCmd (referred from stm32f10x_i2c.o).
+..\object\onenetdemo.axf: Error: L6218E: Undefined symbol RCC_GetClocksFreq (referred from stm32f10x_i2c.o).
+..\object\onenetdemo.axf: Error: L6218E: Undefined symbol RCC_APB1PeriphClockCmd (referred from hal_i2c.o).
+..\object\onenetdemo.axf: Error: L6218E: Undefined symbol RCC_APB2PeriphClockCmd (referred from hal_i2c.o).
+Target not created
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling stm32f10x_rcc.c...
+linking...
+Program Size: Code=32728 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+..\Devices\hal_i2c.c(127): warning:  #177-D: variable "timeout" was declared but never referenced
+compiling sht20.c...
+..\Devices\sht20.c(61): warning:  #68-D: integer conversion resulted in a change of sign
+..\Devices\sht20.c(92): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+..\Devices\adxl345.c(8): warning:  #177-D: variable "data_fmt_val" was declared but never referenced
+..\Devices\adxl345.c(9): warning:  #177-D: variable "pw_ctl" was declared but never referenced
+..\Devices\adxl345.c(10): warning:  #177-D: variable "int_en" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f1" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f2" was declared but never referenced
+..\Devices\adxl345.c(55): warning:  #177-D: variable "f3" was declared but never referenced
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(42): warning:  #181-D: argument is incompatible with corresponding format string conversion
+..\Devices\bh1750fvi.c(40): warning:  #177-D: variable "data" was declared but never referenced
+compiling hmc5883l.c...
+..\Devices\hmc5883l.c(42): warning:  #223-D: function "mDelay" declared implicitly
+..\Devices\hmc5883l.c(67): warning:  #1-D: last line of file ends without a newline
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(33): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(135): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(136): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(141): warning:  #223-D: function "ADXL345_GETXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(142): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(146): warning:  #223-D: function "HMC5883L_GetXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(148): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(287): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(309): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(311): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(329): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(342): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(355): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(368): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(370): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(371): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(394): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpKit.c(396): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(903): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(924): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(939): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(953): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(970): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(1052): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+linking...
+Program Size: Code=32728 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 72 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling hal_i2c.c...
+compiling sht20.c...
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+..\Devices\adxl345.c(31): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+..\Devices\adxl345.c(33): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+..\Devices\adxl345.c(35): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+..\Devices\adxl345.c(37): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+..\Devices\adxl345.c(39): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+..\Devices\adxl345.c(41): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+..\Devices\adxl345.c(43): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+Target not created
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling adxl345.c...
+linking...
+Program Size: Code=32716 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+compiling sht20.c...
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(42): warning:  #181-D: argument is incompatible with corresponding format string conversion
+..\Devices\bh1750fvi.c(40): warning:  #177-D: variable "data" was declared but never referenced
+compiling hmc5883l.c...
+..\Devices\hmc5883l.c(42): warning:  #223-D: function "mDelay" declared implicitly
+..\Devices\hmc5883l.c(67): warning:  #1-D: last line of file ends without a newline
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(33): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(135): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(136): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(141): warning:  #223-D: function "ADXL345_GETXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(142): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(146): warning:  #223-D: function "HMC5883L_GetXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(148): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(287): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(309): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(311): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(329): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(342): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(355): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(368): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(370): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(371): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(394): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpKit.c(396): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(903): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(924): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(939): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(953): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(970): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+..\Protocol\edp\EdpKit.c(1052): warning:  #167-D: argument of type "char **" is incompatible with parameter of type "int8_t **"
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+linking...
+Program Size: Code=32716 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 63 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(41): warning:  #181-D: argument is incompatible with corresponding format string conversion
+compiling hmc5883l.c...
+linking...
+Program Size: Code=32716 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+compiling sht20.c...
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(41): warning:  #181-D: argument is incompatible with corresponding format string conversion
+compiling hmc5883l.c...
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(33): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(46): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(135): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(136): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(141): warning:  #223-D: function "ADXL345_GETXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(142): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(146): warning:  #223-D: function "HMC5883L_GetXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(148): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(277): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(287): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(309): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(311): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(329): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(342): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(355): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(361): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(368): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(370): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(371): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+..\Protocol\edp\EdpDemo.c(413): warning:  #167-D: argument of type "const int8_t *" is incompatible with parameter of type "const char *"
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(315): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(317): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(348): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(369): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(372): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(400): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(402): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(403): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(458): error:  #147-D: declaration is incompatible with "int32_t WriteStr(Buffer *, const char *)" (declared at line 258 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(492): error:  #147-D: declaration is incompatible with "EdpPacket *PacketConnect1(const char *, const char *)" (declared at line 336 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(521): error:  #147-D: declaration is incompatible with "EdpPacket *PacketConnect2(const char *, const char *)" (declared at line 351 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(550): error:  #147-D: declaration is incompatible with "EdpPacket *PacketPushdata(const char *, const char *, uint32_t)" (declared at line 379 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(568): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataJson(const char *, cJSON *, int)" (declared at line 412 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(654): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedataAck(EdpPacket *, char **)" (declared at line 559 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(676): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataBin(const char *, cJSON *, const uint8_t *, uint32_t)" (declared at line 604 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(727): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataBinStr(const char *, const char *, const uint8_t *, uint32_t)" (declared at line 619 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(772): error:  #147-D: declaration is incompatible with "EdpPacket *PacketCmdResp(const char *, uint16_t, const char *, uint32_t)" (declared at line 697 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(898): error:  #147-D: declaration is incompatible with "int32_t UnpackPushdata(EdpPacket *, char **, char **, uint32_t *)" (declared at line 397 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(913): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedata(EdpPacket *, char **, uint8_t *)" (declared at line 638 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(967): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedataBinStr(EdpPacket *, char **, uint8_t **, uint32_t *)" (declared at line 681 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(979): error:  #147-D: declaration is incompatible with "int32_t UnpackCmdReq(EdpPacket *, char **, uint16_t *, char **, uint32_t *)" (declared at line 715 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(982): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1006): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1014): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataSimpleString(const char *, const char *)" (declared at line 573 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(1017): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1018): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1050): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedataSimpleString(EdpPacket *, char **)" (declared at line 589 of "..\Protocol\edp\EdpKit.h")
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+Target not created
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(315): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(317): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(348): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(369): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(372): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(400): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(402): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(403): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(458): error:  #147-D: declaration is incompatible with "int32_t WriteStr(Buffer *, const char *)" (declared at line 258 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(492): error:  #147-D: declaration is incompatible with "EdpPacket *PacketConnect1(const char *, const char *)" (declared at line 336 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(521): error:  #147-D: declaration is incompatible with "EdpPacket *PacketConnect2(const char *, const char *)" (declared at line 351 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(550): error:  #147-D: declaration is incompatible with "EdpPacket *PacketPushdata(const char *, const char *, uint32_t)" (declared at line 379 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(568): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataJson(const char *, cJSON *, int)" (declared at line 412 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(654): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedataAck(EdpPacket *, char **)" (declared at line 559 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(676): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataBin(const char *, cJSON *, const uint8_t *, uint32_t)" (declared at line 604 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(727): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataBinStr(const char *, const char *, const uint8_t *, uint32_t)" (declared at line 619 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(772): error:  #147-D: declaration is incompatible with "EdpPacket *PacketCmdResp(const char *, uint16_t, const char *, uint32_t)" (declared at line 697 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(898): error:  #147-D: declaration is incompatible with "int32_t UnpackPushdata(EdpPacket *, char **, char **, uint32_t *)" (declared at line 397 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(913): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedata(EdpPacket *, char **, uint8_t *)" (declared at line 638 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(967): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedataBinStr(EdpPacket *, char **, uint8_t **, uint32_t *)" (declared at line 681 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(979): error:  #147-D: declaration is incompatible with "int32_t UnpackCmdReq(EdpPacket *, char **, uint16_t *, char **, uint32_t *)" (declared at line 715 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(982): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1006): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1014): error:  #147-D: declaration is incompatible with "EdpPacket *PacketSavedataSimpleString(const char *, const char *)" (declared at line 573 of "..\Protocol\edp\EdpKit.h")
+..\Protocol\edp\EdpKit.c(1017): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1018): error:  #20: identifier "uint32" is undefined
+..\Protocol\edp\EdpKit.c(1050): error:  #147-D: declaration is incompatible with "int32_t UnpackSavedataSimpleString(EdpPacket *, char **)" (declared at line 589 of "..\Protocol\edp\EdpKit.h")
+Target not created
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling main.c...
+..\Protocol\edp\EdpKit.h(10): error:  #5: cannot open source input file "Common.h": No such file or directory
+compiling EdpDemo.c...
+..\Protocol\edp\EdpKit.h(10): error:  #5: cannot open source input file "Common.h": No such file or directory
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.h(10): error:  #5: cannot open source input file "Common.h": No such file or directory
+Target not created
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(33): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(108): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(135): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(136): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(141): warning:  #223-D: function "ADXL345_GETXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(142): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(146): warning:  #223-D: function "HMC5883L_GetXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(148): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const int8_t *"
+..\Protocol\edp\EdpDemo.c(309): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(311): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(329): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(368): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 27 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(34): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(109): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(109): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(136): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(137): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(143): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(147): warning:  #223-D: function "HMC5883L_GetXYZ" declared implicitly
+..\Protocol\edp\EdpDemo.c(149): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(155): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const int8_t *"
+..\Protocol\edp\EdpDemo.c(310): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(312): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(330): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(369): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 19 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(35): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(156): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const int8_t *"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(313): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(331): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(370): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *"
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 18 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(35): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(156): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const int8_t *"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(313): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(331): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 17 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(156): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const int8_t *"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(313): warning:  #167-D: argument of type "int8_t **" is incompatible with parameter of type "char **"
+..\Protocol\edp\EdpDemo.c(331): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 16 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(156): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const int8_t *"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+..\Protocol\edp\EdpDemo.c(331): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "int8_t *"
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 15 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(156): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const int8_t *"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 14 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(154): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 13 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(152): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(153): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 11 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(150): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 7 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(144): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 6 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 5 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(137): warning:  #223-D: function "Read_BH1750" declared implicitly
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 4 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *restrict"
+..\Protocol\edp\EdpDemo.c(110): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "const char *restrict"
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 3 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+compiling sht20.c...
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(41): warning:  #181-D: argument is incompatible with corresponding format string conversion
+compiling hmc5883l.c...
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+..\Network\esp8266\esp8266.c(41): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "uint8_t *"
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 19 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling esp8266.c...
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+..\User\main.c(39): warning:  #177-D: variable "data" was declared but never referenced
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+compiling sht20.c...
+..\Devices\sht20.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "int8_t *"
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(41): warning:  #181-D: argument is incompatible with corresponding format string conversion
+compiling hmc5883l.c...
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 18 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling main.c...
+compiling sht20.c...
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+compiling sht20.c...
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+compiling bh1750fvi.c...
+..\Devices\bh1750fvi.c(41): warning:  #181-D: argument is incompatible with corresponding format string conversion
+compiling hmc5883l.c...
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 15 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling bh1750fvi.c...
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+compiling sht20.c...
+..\Devices\sht20.c(276): warning:  #68-D: integer conversion resulted in a change of sign
+compiling adxl345.c...
+compiling bh1750fvi.c...
+compiling hmc5883l.c...
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 14 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling sht20.c...
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_hd.s...
+compiling main.c...
+compiling stm32f10x_it.c...
+..\User\stm32f10x_it.c(166): warning:  #550-D: variable "data" was set but never used
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
+compiling hal_i2c.c...
+compiling sht20.c...
+compiling adxl345.c...
+compiling bh1750fvi.c...
+compiling hmc5883l.c...
+compiling usart1.c...
+compiling usart2.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+compiling EdpKit.c...
+..\Protocol\edp\EdpKit.c(629): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(631): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(636): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(638): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(643): warning:  #177-D: variable "valuestring" was declared but never referenced
+..\Protocol\edp\EdpKit.c(645): warning:  #177-D: variable "valuestring" was declared but never referenced
+compiling cJSON.c...
+..\Utils\cJSON.c(59): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(368): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(495): warning:  #111-D: statement is unreachable
+..\Utils\cJSON.c(633): warning:  #1293-D: assignment in condition
+..\Utils\cJSON.c(783): warning:  #1293-D: assignment in condition
+compiling utils.c...
+compiling esp8266.c...
+linking...
+Program Size: Code=32712 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 13 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling main.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(311): warning:  #188-D: enumerated type mixed with another type
+compiling esp8266.c...
+linking...
+Program Size: Code=32728 RO-data=1512 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling main.c...
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(312): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32732 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(313): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32732 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+linking...
+Program Size: Code=32732 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+linking...
+Program Size: Code=32732 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(315): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32760 RO-data=1536 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(315): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32756 RO-data=1540 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(316): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32760 RO-data=1536 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling hal_i2c.c...
+linking...
+Program Size: Code=32760 RO-data=1536 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 0 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'OneNET_Demo_ESP8266_EDP_Sensors'
+compiling EdpDemo.c...
+..\Protocol\edp\EdpDemo.c(315): warning:  #188-D: enumerated type mixed with another type
+linking...
+Program Size: Code=32732 RO-data=1516 RW-data=116 ZI-data=2756  
+"..\object\onenetdemo.axf" - 0 Error(s), 1 Warning(s).
+Load "..\\object\\onenetdemo.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Clean started: Project: 'onenetdemo'
+   deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'
 Clean started: Project: 'onenetdemo'
    deleting intermediate output files for target 'OneNET_Demo_ESP8266_EDP_Sensors'

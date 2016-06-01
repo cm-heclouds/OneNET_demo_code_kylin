@@ -35,43 +35,43 @@ void LED_Init(void)
 **/
 void LED_CmdCtl(void)
 {
-		if((NULL != strstr(usart2_cmd_buf, "LED11")))  //约定平台控制命令"LED11"为打开红色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED11")))  //约定平台控制命令"LED11"为打开红色LED灯
 		{
 				LED_RED_ON;	
 				red_value=1;
 		}
-		if((NULL != strstr(usart2_cmd_buf, "LED21")))  //约定平台控制命令"LED21"为打开绿色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED21")))  //约定平台控制命令"LED21"为打开绿色LED灯
 		{
 				LED_GREEN_ON;	
 				green_value=1;
 		}
-		if((NULL != strstr(usart2_cmd_buf, "LED31")))  //约定平台控制命令"LED31"为打开黄色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED31")))  //约定平台控制命令"LED31"为打开黄色LED灯
 		{
 				LED_YELLOW_ON;
 				yellow_value=1;			
 		}
-		if((NULL != strstr(usart2_cmd_buf, "LED41")))  //约定平台控制命令"LED41"为打开蓝色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED41")))  //约定平台控制命令"LED41"为打开蓝色LED灯
 		{
 				LED_BLUE_ON;	
 				blue_value=1;
 		}
 		
-		if((NULL != strstr(usart2_cmd_buf, "LED10")))  //约定平台控制命令"LED10"为关闭红色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED10")))  //约定平台控制命令"LED10"为关闭红色LED灯
 		{
 				LED_RED_OFF;	
 				red_value=0;
 		}
-		if((NULL != strstr(usart2_cmd_buf, "LED20")))  //约定平台控制命令"LED20"为关闭绿色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED20")))  //约定平台控制命令"LED20"为关闭绿色LED灯
 		{
 				LED_GREEN_OFF;
 				green_value=0;	
 		}
-		if((NULL != strstr(usart2_cmd_buf, "LED30")))  //约定平台控制命令"LED30"为关闭黄色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED30")))  //约定平台控制命令"LED30"为关闭黄色LED灯
 		{
 				LED_YELLOW_OFF;	
 				yellow_value=0;
 		}
-		if((NULL != strstr(usart2_cmd_buf, "LED40")))  //约定平台控制命令"LED40"为关闭蓝色LED灯
+		if((NULL != strstr((const char *)usart2_cmd_buf, "LED40")))  //约定平台控制命令"LED40"为关闭蓝色LED灯
 		{
 				LED_BLUE_OFF;	
 				blue_value=0;

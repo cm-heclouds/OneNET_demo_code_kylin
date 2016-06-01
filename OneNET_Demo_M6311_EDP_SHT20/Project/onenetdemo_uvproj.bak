@@ -349,7 +349,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Hal;..\Utils;..\Protocol\edp;..\Devices;..\Network\m6331;..\Network\esp8266;..\object;..\Project;..\User;..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\Libraries\STM32F10x_StdPeriph_Driver\src;..\Libraries\CMSIS\startup\arm;..\EDP</IncludePath>
+              <IncludePath>..\Hal;..\Utils;..\Protocol\edp;..\Devices;..\Network\m6311;..\Network\esp8266;..\object;..\Project;..\User;..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\Libraries\STM32F10x_StdPeriph_Driver\src;..\Libraries\CMSIS\startup\arm;..\EDP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

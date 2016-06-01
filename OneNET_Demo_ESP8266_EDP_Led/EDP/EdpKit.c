@@ -266,7 +266,6 @@ void assert(int ecp)
 
 static void FormatAt(char* buffer, int len, time_t now)
 {
-    struct tm timinfo;
 
     if (now == 0){
 	now = 0;  //time(0);
@@ -546,7 +545,7 @@ EdpPacket* PacketSavedataJson(const char* dst_devid, cJSON* json_obj, int type)
     uint32 json_len = 0;
 
     pkg = NewBuffer();
-    remainlen;
+
     json_out = cJSON_Print(json_obj);
     json_len = strlen(json_out);
 

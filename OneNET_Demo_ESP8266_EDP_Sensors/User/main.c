@@ -36,7 +36,6 @@
 
 int main(void)
 {
-    int16_t data[3];
     /*初始化串口1 用于调试信息输出*/
     USART1_Init();
     /*初始化串口2 用于MT6331通信*/
@@ -44,7 +43,7 @@ int main(void)
     mDelay(1000);
     /*I2C初始化，使用I2C2*/
     Hal_I2C_Init();
-	  ESP8266_Init(EDP_CIPSTART,CWJAP);
+	ESP8266_Init(EDP_CIPSTART,CWJAP);
     EDP_Loop();
 }
 

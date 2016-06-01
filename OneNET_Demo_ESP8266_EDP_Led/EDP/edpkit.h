@@ -108,7 +108,7 @@ typedef struct Buffer
  *          返回值非空 生成Buffer成功, 返回这个Buffer的指针
  *          返回值为空 生成Buffer失败, 内存不够
  */
-EDPKIT_DLL Buffer* NewBuffer();
+EDPKIT_DLL Buffer* NewBuffer(void);
 /* 
  * 函数名:  DeleteBuffer
  * 功能:    销毁Buffer
