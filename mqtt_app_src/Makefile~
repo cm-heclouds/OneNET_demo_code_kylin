@@ -1,5 +1,0 @@
-CFLAGS:=$(CFLAGS) -I./include -I./mqtt
-all:
-	gcc  $(CFLAGS) -o mqttc *.c  mqtt/*.c src/*.c
-clean:
-	rm -rf mqttc
