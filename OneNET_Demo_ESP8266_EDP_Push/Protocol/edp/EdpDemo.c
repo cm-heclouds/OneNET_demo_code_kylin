@@ -223,7 +223,7 @@ void Recv_Thread_Func(void)
                             /* UnpackSavedataInt(jsonorbin, pkg, &ds_id, &iValue); */
                             /* printf("ds_id = %s\nvalue= %d\n", ds_id, iValue); */
 
-                            UnpackSavedataDouble(jsonorbin, pkg, &ds_id, &dValue);
+                            UnpackSavedataDouble((SaveDataType)jsonorbin, pkg, &ds_id, &dValue);
                             printf("ds_id = %s\nvalue = %f\r\n", ds_id, dValue);
 
                             /* UnpackSavedataString(jsonorbin, pkg, &ds_id, &cValue); */

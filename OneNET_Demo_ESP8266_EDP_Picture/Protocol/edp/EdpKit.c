@@ -127,23 +127,23 @@ void my_assert(int a)
                                     \
     return pkg;                         \
 }
-
 #define MKFUN_UNPACK_SAVE_DATA(TYPE, NAME)              \
-    int32_t UnpackSavedata##NAME(SaveDataType type,           \
+    int32_t UnpackSavedata##NAME(SaveDataType type,         \
                  EdpPacket* pkg,            \
                  char** ds_id,              \
                  TYPE* value)               \
     {                                   \
-    int ret = -1;                           \
+    int32_t ret = -1;                           \
+	char *vstring;	\
     switch (type){                          \
     case kTypeFullJson:                         \
-    ret = UnpackSavedataType1##NAME(pkg, ds_id, value);     \
+    ret = UnpackSavedataType1##NAME(pkg, ds_id, value,vstring);     \
     break;                              \
     case kTypeSimpleJsonWithoutTime:                    \
-    ret = UnpackSavedataType2##NAME(pkg, ds_id, value);     \
+    ret = UnpackSavedataType2##NAME(pkg, ds_id, value,vstring);     \
     break;                              \
     case kTypeSimpleJsonWithTime:                   \
-    ret = UnpackSavedataType3##NAME(pkg, ds_id, value);     \
+    ret = UnpackSavedataType3##NAME(pkg, ds_id, value,vstring);     \
     break;                              \
     default:                                \
     break;                              \
@@ -153,9 +153,9 @@ void my_assert(int a)
 }
 
 #define MKFUN_UNPACK_SAVE_DATA_TYPE1(TYPE, NAME, MED)           \
-    static int32_t UnpackSavedataType1##NAME(EdpPacket* pkg,      \
+    static int32_t UnpackSavedataType1##NAME(EdpPacket* pkg,        \
                          char** ds_id,      \
-                         TYPE* value)       \
+                         TYPE* value,char* valuestring)       \
     {                                   \
     cJSON* json_obj = NULL;                     \
     cJSON* ds_array = NULL;                     \
@@ -163,7 +163,6 @@ void my_assert(int a)
     char* id = NULL;                            \
     cJSON* dp_array = NULL;                     \
     cJSON* dp_item = NULL;                      \
-    char* valuestring = NULL;                       \
                                     \
     if(0 != UnpackSavedataJson(pkg, &json_obj))             \
     return ERR_UNPACK_SAVED_JSON;                   \
@@ -202,14 +201,13 @@ void my_assert(int a)
 }
 
 #define MKFUN_UNPACK_SAVE_DATA_TYPE2(TYPE, NAME, MED)           \
-    static int32_t UnpackSavedataType2##NAME(EdpPacket* pkg,      \
+    static int32_t UnpackSavedataType2##NAME(EdpPacket* pkg,        \
                           char** ds_id,     \
-                          TYPE* value)      \
+                          TYPE* value,char* valuestring)      \
     {                                   \
         cJSON* json_obj = NULL;                     \
     cJSON* json_child = NULL;                   \
     size_t len = 0;                         \
-    char* valuestring = NULL;                   \
                                     \
     if(0 != UnpackSavedataJson(pkg, &json_obj))         \
         return ERR_UNPACK_SAVED_JSON;               \
@@ -237,13 +235,12 @@ void my_assert(int a)
 }
 
 #define MKFUN_UNPACK_SAVE_DATA_TYPE3(TYPE, NAME, MED)           \
-    static int32_t UnpackSavedataType3##NAME(EdpPacket* pkg,      \
+    static int32_t UnpackSavedataType3##NAME(EdpPacket* pkg,        \
                           char** ds_id,     \
-                          TYPE* value)      \
+                          TYPE* value,char* valuestring)      \
 {                                   \
         cJSON* json_obj = NULL;                     \
     cJSON* json_child = NULL;                   \
-    char* valuestring = NULL;                   \
     size_t len = 0;                         \
                                     \
     if(0 != UnpackSavedataJson(pkg, &json_obj))         \

@@ -163,6 +163,7 @@ void EXTI0_IRQHandler(void)
   */
 void USART1_IRQHandler(void)
 {
+#if 0
 		unsigned int data;
 
     if(USART1->SR & 0x0F)
@@ -178,6 +179,7 @@ void USART1_IRQHandler(void)
     }
 		else
 		{;}
+#endif
 }
 
 /**

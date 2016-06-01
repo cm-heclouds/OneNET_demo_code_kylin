@@ -163,7 +163,8 @@ void EXTI0_IRQHandler(void)
   */
 void USART1_IRQHandler(void)
 {
-		unsigned char data;
+	#if 0
+	unsigned char data;
     if(USART1->SR & 0x0F)
     {
         // See if we have some kind of error
@@ -177,6 +178,7 @@ void USART1_IRQHandler(void)
     }
 		else
 		{;}
+	#endif
 }
 
 /**

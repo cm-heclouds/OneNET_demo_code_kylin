@@ -35,15 +35,17 @@ struct Command
 void set_key_event(int event);
 void process_key_event(void);
 static int MqttSample_CmdConnect(struct MqttSampleContext *ctx);
+static int MqttSample_CmdSubscribe(struct MqttSampleContext *ctx);
+#if 0
 static int MqttSample_CmdPing(struct MqttSampleContext *ctx);
 static int MqttSample_CmdPublish(struct MqttSampleContext *ctx);
-static int MqttSample_CmdSubscribe(struct MqttSampleContext *ctx);
+
 static int MqttSample_CmdUnsubscribe(struct MqttSampleContext *ctx);
 static int MqttSample_CmdDisconnect(struct MqttSampleContext *ctx);
 static int MqttSample_CmdCmdRet(struct MqttSampleContext *ctx);
 static int MqttSample_CmdExit(struct MqttSampleContext *ctx);
 
-#if 0
+
 static const struct Command commands[] =
 {
     {"connect", MqttSample_CmdConnect, "Establish the connection."},
@@ -281,6 +283,8 @@ static int MqttSample_CmdConnect(struct MqttSampleContext *ctx)
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
+/*如果要使用下面函数，请打开宏*/
+#if 0
 /**
   * @brief 发送MQTT Ping报文
     * @param  ctx:上下文变量
@@ -370,6 +374,7 @@ static int MqttSample_CmdPublish(struct MqttSampleContext *ctx)
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
+#endif
 int Mqtt_AppendLength(struct MqttBuffer *buf, uint32_t len);
 
 /**
@@ -517,6 +522,8 @@ static int MqttSample_CmdSubscribe(struct MqttSampleContext *ctx)
     MqttBuffer_Reset(ctx->mqttbuf);
     return 0;
 }
+/*如果要使用下面注释的api，请打开宏*/
+#if 0
 /**
   * @brief 设备取消订阅，TOPIC是TOPIC_TO_UNSUB
   * @param  ctx:上下文变量
@@ -592,6 +599,7 @@ static int MqttSample_CmdExit(struct MqttSampleContext *ctx)
     (void)ctx;
     return -1;
 }
+#endif
 /**
   * @brief  初始化MQTT上下文，开发者主要替换设备ID，项目ID和API_KEY
   * @param  ctx:上下文变量

@@ -127,142 +127,140 @@ void assert(int ecp)
 	return pkg;							\
 }
 
-#define MKFUN_UNPACK_SAVE_DATA(TYPE, NAME)				\
-    int32 UnpackSavedata##NAME(SaveDataType type,			\
-				 EdpPacket* pkg,			\
-				 char** ds_id,				\
-				 TYPE* value)				\
-    {									\
-    int ret = -1;							\
-    switch (type){							\
-    case kTypeFullJson:							\
-	ret = UnpackSavedataType1##NAME(pkg, ds_id, value);		\
-	break;								\
-    case kTypeSimpleJsonWithoutTime:					\
-	ret = UnpackSavedataType2##NAME(pkg, ds_id, value);		\
-	break;								\
-    case kTypeSimpleJsonWithTime:					\
-	ret = UnpackSavedataType3##NAME(pkg, ds_id, value);		\
-	break;								\
-    default:								\
-	break;								\
-    }									\
-									\
-    return ret;								\
+#define MKFUN_UNPACK_SAVE_DATA(TYPE, NAME)              \
+    int UnpackSavedata##NAME(SaveDataType type,         \
+                 EdpPacket* pkg,            \
+                 char** ds_id,              \
+                 TYPE* value)               \
+    {                                   \
+    int ret = -1;                           \
+	char *vstring;	\
+    switch (type){                          \
+    case kTypeFullJson:                         \
+    ret = UnpackSavedataType1##NAME(pkg, ds_id, value,vstring);     \
+    break;                              \
+    case kTypeSimpleJsonWithoutTime:                    \
+    ret = UnpackSavedataType2##NAME(pkg, ds_id, value,vstring);     \
+    break;                              \
+    case kTypeSimpleJsonWithTime:                   \
+    ret = UnpackSavedataType3##NAME(pkg, ds_id, value,vstring);     \
+    break;                              \
+    default:                                \
+    break;                              \
+    }                                   \
+                                    \
+    return ret;                             \
 }
 
-#define MKFUN_UNPACK_SAVE_DATA_TYPE1(TYPE, NAME, MED)			\
-    static int32 UnpackSavedataType1##NAME(EdpPacket* pkg,		\
-					     char** ds_id,		\
-					     TYPE* value)		\
-    {									\
-    cJSON* json_obj = NULL;						\
-    cJSON* ds_array = NULL;						\
-    cJSON* ds_item = NULL;						\
-    char* id = NULL;							\
-    cJSON* dp_array = NULL;						\
-    cJSON* dp_item = NULL;						\
-    char* valuestring = NULL;						\
-									\
-    if(0 != UnpackSavedataJson(pkg, &json_obj))				\
-	return ERR_UNPACK_SAVED_JSON;					\
-									\
-    ds_array = cJSON_GetObjectItem(json_obj, "datastreams");		\
-    if((0 == ds_array) || (1 != cJSON_GetArraySize(ds_array)))		\
-	return ERR_UNPACK_SAVED_JSON;					\
-									\
-    ds_item = cJSON_GetArrayItem(ds_array, 0);				\
-    if(0 == ds_item)							\
-	return ERR_UNPACK_SAVED_JSON;					\
-									\
-    id = cJSON_GetObjectItem(ds_item, "id")->valuestring;		\
-    *ds_id = (char*)malloc(strlen(id)+1);				\
-    memcpy((char*)(*ds_id), id, strlen(id)+1);				\
-    									\
-    dp_array = cJSON_GetObjectItem(ds_item, "datapoints");		\
-    if((0 == dp_array) || (1 != cJSON_GetArraySize(dp_array)))		\
-	return ERR_UNPACK_SAVED_JSON;					\
-									\
-    dp_item = cJSON_GetArrayItem(dp_array, 0);				\
+#define MKFUN_UNPACK_SAVE_DATA_TYPE1(TYPE, NAME, MED)           \
+    static int UnpackSavedataType1##NAME(EdpPacket* pkg,        \
+                         char** ds_id,      \
+                         TYPE* value,char* valuestring)       \
+    {                                   \
+    cJSON* json_obj = NULL;                     \
+    cJSON* ds_array = NULL;                     \
+    cJSON* ds_item = NULL;                      \
+    char* id = NULL;                            \
+    cJSON* dp_array = NULL;                     \
+    cJSON* dp_item = NULL;                      \
+                                    \
+    if(0 != UnpackSavedataJson(pkg, &json_obj))             \
+    return ERR_UNPACK_SAVED_JSON;                   \
+                                    \
+    ds_array = cJSON_GetObjectItem(json_obj, "datastreams");        \
+    if((0 == ds_array) || (1 != cJSON_GetArraySize(ds_array)))      \
+    return ERR_UNPACK_SAVED_JSON;                   \
+                                    \
+    ds_item = cJSON_GetArrayItem(ds_array, 0);              \
+    if(0 == ds_item)                            \
+    return ERR_UNPACK_SAVED_JSON;                   \
+                                    \
+    id = cJSON_GetObjectItem(ds_item, "id")->valuestring;       \
+    *ds_id = (char*)malloc(strlen(id)+1);               \
+    memcpy((char*)(*ds_id), id, strlen(id)+1);              \
+                                        \
+    dp_array = cJSON_GetObjectItem(ds_item, "datapoints");      \
+    if((0 == dp_array) || (1 != cJSON_GetArraySize(dp_array)))      \
+    return ERR_UNPACK_SAVED_JSON;                   \
+                                    \
+    dp_item = cJSON_GetArrayItem(dp_array, 0);              \
 
 
-#define UNPACK_SAVE_DATA_TYPE1_END_STRING				\
-    valuestring = cJSON_GetObjectItem(dp_item, "value")->valuestring;	\
-    *value = (char*)malloc(strlen(valuestring)+1);			\
-    memcpy((char*)(*value), valuestring, strlen(valuestring)+1);	\
-    cJSON_Delete(json_obj);						\
-    return 0;								\
+#define UNPACK_SAVE_DATA_TYPE1_END_STRING               \
+    valuestring = cJSON_GetObjectItem(dp_item, "value")->valuestring;   \
+    *value = (char*)malloc(strlen(valuestring)+1);          \
+    memcpy((char*)(*value), valuestring, strlen(valuestring)+1);    \
+    cJSON_Delete(json_obj);                     \
+    return 0;                               \
 }
 
-#define UNPACK_SAVE_DATA_TYPE1_END_NUMBER(TYPE)			\
-    *value = cJSON_GetObjectItem(dp_item, "value")->value##TYPE;	\
-    cJSON_Delete(json_obj);						\
-    return 0;								\
+#define UNPACK_SAVE_DATA_TYPE1_END_NUMBER(TYPE)         \
+    *value = cJSON_GetObjectItem(dp_item, "value")->value##TYPE;    \
+    cJSON_Delete(json_obj);                     \
+    return 0;                               \
 }
 
-#define MKFUN_UNPACK_SAVE_DATA_TYPE2(TYPE, NAME, MED)			\
-    static int32 UnpackSavedataType2##NAME(EdpPacket* pkg,		\
-						  char** ds_id,		\
-						  TYPE* value)		\
-    {									\
-        cJSON* json_obj = NULL;						\
-	cJSON* json_child = NULL;					\
-	size_t len = 0;							\
-	char* valuestring = NULL;					\
-									\
-	if(0 != UnpackSavedataJson(pkg, &json_obj))			\
-	    return ERR_UNPACK_SAVED_JSON;				\
-	if (!json_obj->child){						\
-	    cJSON_Delete(json_obj);					\
-	    return ERR_UNPACK_SAVED_JSON;				\
-	}								\
-	json_child = json_obj->child;					\
-	len = strlen(json_child->string) + 1;				\
-	*ds_id = (char*)malloc(len);					\
-	memcpy((char*)(*ds_id), json_child->string, len);		\
+#define MKFUN_UNPACK_SAVE_DATA_TYPE2(TYPE, NAME, MED)           \
+    static int UnpackSavedataType2##NAME(EdpPacket* pkg,        \
+                          char** ds_id,     \
+                          TYPE* value,char* valuestring)      \
+    {                                   \
+        cJSON* json_obj = NULL;                     \
+    cJSON* json_child = NULL;                   \
+    size_t len = 0;                         \
+                                    \
+    if(0 != UnpackSavedataJson(pkg, &json_obj))         \
+        return ERR_UNPACK_SAVED_JSON;               \
+    if (!json_obj->child){                      \
+        cJSON_Delete(json_obj);                 \
+        return ERR_UNPACK_SAVED_JSON;               \
+    }                               \
+    json_child = json_obj->child;                   \
+    len = strlen(json_child->string) + 1;               \
+    *ds_id = (char*)malloc(len);                    \
+    memcpy((char*)(*ds_id), json_child->string, len);       \
 
-#define UNPACK_SAVE_DATA_TYPE23_END_NUMBER(TYPE)			\
-    *value = json_child->value##TYPE;					\
-    cJSON_Delete(json_obj);						\
-    return 0;								\
+#define UNPACK_SAVE_DATA_TYPE23_END_NUMBER(TYPE)            \
+    *value = json_child->value##TYPE;                   \
+    cJSON_Delete(json_obj);                     \
+    return 0;                               \
 }
 
-#define UNPACK_SAVE_DATA_TYPE23_END_STRING()				\
-    valuestring = json_child->valuestring;				\
-    *value = (char*)malloc(strlen(valuestring)+1);			\
-    memcpy((char*)(*value), valuestring, strlen(valuestring)+1);	\
-    cJSON_Delete(json_obj);						\
-    return 0;								\
+#define UNPACK_SAVE_DATA_TYPE23_END_STRING()                \
+    valuestring = json_child->valuestring;              \
+    *value = (char*)malloc(strlen(valuestring)+1);          \
+    memcpy((char*)(*value), valuestring, strlen(valuestring)+1);    \
+    cJSON_Delete(json_obj);                     \
+    return 0;                               \
 }
 
-#define MKFUN_UNPACK_SAVE_DATA_TYPE3(TYPE, NAME, MED)			\
-    static int32 UnpackSavedataType3##NAME(EdpPacket* pkg,		\
-						  char** ds_id,		\
-						  TYPE* value)		\
-{									\
-        cJSON* json_obj = NULL;						\
-	cJSON* json_child = NULL;					\
-	char* valuestring = NULL;					\
-	size_t len = 0;							\
-									\
-	if(0 != UnpackSavedataJson(pkg, &json_obj))			\
-	    return ERR_UNPACK_SAVED_JSON;				\
-									\
-	json_child = json_obj->child;					\
-	if (!json_child || !json_child->string){			\
-	    cJSON_Delete(json_obj);					\
-	    return ERR_UNPACK_SAVED_JSON;				\
-	}								\
-									\
-	len = strlen(json_child->string) + 1;				\
-	*ds_id = (char*)malloc(len);					\
-	memcpy(*ds_id, json_child->string, len);			\
-									\
-	json_child = json_child->child;					\
-	if (!json_child){						\
-	    cJSON_Delete(json_obj);					\
-	    return ERR_UNPACK_SAVED_JSON;				\
-	}								\
+#define MKFUN_UNPACK_SAVE_DATA_TYPE3(TYPE, NAME, MED)           \
+    static int UnpackSavedataType3##NAME(EdpPacket* pkg,        \
+                          char** ds_id,     \
+                          TYPE* value,char* valuestring)      \
+{                                   \
+        cJSON* json_obj = NULL;                     \
+    cJSON* json_child = NULL;                   \
+    size_t len = 0;                         \
+                                    \
+    if(0 != UnpackSavedataJson(pkg, &json_obj))         \
+        return ERR_UNPACK_SAVED_JSON;               \
+                                    \
+    json_child = json_obj->child;                   \
+    if (!json_child || !json_child->string){            \
+        cJSON_Delete(json_obj);                 \
+        return ERR_UNPACK_SAVED_JSON;               \
+    }                               \
+                                    \
+    len = strlen(json_child->string) + 1;               \
+    *ds_id = (char*)malloc(len);                    \
+    memcpy(*ds_id, json_child->string, len);            \
+                                    \
+    json_child = json_child->child;                 \
+    if (!json_child){                       \
+        cJSON_Delete(json_obj);                 \
+        return ERR_UNPACK_SAVED_JSON;               \
+    }                               \
 
 static void FormatAt(char* buffer, int len, time_t now)
 {

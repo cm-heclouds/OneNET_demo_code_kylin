@@ -8,7 +8,7 @@
 #define   CWMODE      "AT+CWMODE=1\r\n"
 #define   RST         "AT+RST\r\n"
 #define   CIFSR       "AT+CIFSR\r\n"
-#define   CWJAP       "AT+CWJAP=\"ONENET\",\"IOT@Chinamobile\"\r\n"
+#define   CWJAP       "AT+CWJAP=\"ONENET\",\"\"\r\n"
 #define   CIPSTART    "AT+CIPSTART=\"TCP\",\"183.230.40.39\",876\r\n"
 #define   CIPMODE     "AT+CIPMODE=1\r\n"
 #define   CIPSEND     "AT+CIPSEND\r\n"

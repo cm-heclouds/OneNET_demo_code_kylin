@@ -19,7 +19,7 @@ extern volatile uint32_t   usart2_rcv_len;
 /*
  *  @brief USART2串口发送AT命令用
  */
-void xSendCmd(int8_t* cmd, int8_t* result, int32_t timeOut);
+ void SendCmd(uint8_t* cmd, int8_t* result, int32_t timeOut);
 /*
  *  @brief 返回USART2已接收的数据长度
  */
