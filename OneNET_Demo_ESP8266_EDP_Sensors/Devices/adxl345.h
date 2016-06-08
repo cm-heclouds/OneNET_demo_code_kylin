@@ -17,4 +17,4 @@ void ADXL345_init(void);
   * @param  data_out:存储传感器采集结果
   * @retval None
   **/
-void ADXL345_GETXYZ(int16_t data_out[3])；
+void ADXL345_GETXYZ(int16_t data_out[3]);
