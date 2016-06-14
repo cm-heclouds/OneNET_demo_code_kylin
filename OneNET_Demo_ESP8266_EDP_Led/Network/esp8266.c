@@ -95,7 +95,7 @@ void SendCmd(char* cmd, char* result, int timeOut)
 								break;
 						}
 				}		
-        if(count<timeOut)
+        if(count>=timeOut)
 				{
 						break;
 				}
