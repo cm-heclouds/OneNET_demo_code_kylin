@@ -92,12 +92,12 @@ void SendCmd(char* cmd, char* result, int timeOut)
 						mDelay(100);
 						if((NULL != strstr((const char *)usart2_rcv_buf, (const char *)result)))
 						{
-								break;
+								return;
 						}
 				}		
         if(count>=timeOut)
 				{
-						break;
+						return;
 				}
     }
 }
