@@ -42,7 +42,7 @@ void USART1_Init(void)
     USART_Cmd(USART1, ENABLE);
 
     //Enable usart1 receive interrupt
-    USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+    USART_ITConfig(USART1, USART_IT_RXNE, DISABLE);
 
     NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;

@@ -11,31 +11,31 @@ char send_buf[MAX_SEND_BUF_LEN];
 void ESP8266_Init(void)
 {
 		printf("%s\r\n","[ESP8266_Init]ENTER AT.");
-		SendCmd(AT,"OK",10); 			
+		SendCmd(AT,"OK",1000); 			
 		printf("%s\r\n","[ESP8266_Init]EXIT AT.");
 		
 		printf("%s\r\n","[ESP8266_Init]ENTER CWMODE.");
-		SendCmd(CWMODE,"OK",10);		
+		SendCmd(CWMODE,"OK",1000);		
 		printf("%s\r\n","[ESP8266_Init]EXIT CWMODE.");
 	
 		printf("%s\r\n","[ESP8266_Init]ENTER RST.");
-		SendCmd(RST,"OK",40);	
+		SendCmd(RST,"OK",2000);	
 		printf("%s\r\n","[ESP8266_Init]EXIT RST.");
 	
 		printf("%s\r\n","[ESP8266_Init]ENTER CIFSR.");
-		SendCmd(CIFSR,"OK",20);	
+		SendCmd(CIFSR,"OK",1000);	
 		printf("%s\r\n","[ESP8266_Init]EXIT CIFSR.");
 	
 		printf("%s\r\n","[ESP8266_Init]ENTER CWJAP.");
-		SendCmd(CWJAP,"OK",40);	
+		SendCmd(CWJAP,"OK",2200);	
 		printf("%s\r\n","[ESP8266_Init]EXIT CWJAP.");
-	
+
 		printf("%s\r\n","[ESP8266_Init]ENTER CIPSTART.");
-		SendCmd(CIPSTART,"OK",20);
+		SendCmd(CIPSTART,"OK",2200);
 		printf("%s\r\n","[ESP8266_Init]EXIT CIPSART.");
 		
 		printf("%s\r\n","[ESP8266_Init]ENTER CIPMODE.");
-		SendCmd(CIPMODE,"OK",10);
+		SendCmd(CIPMODE,"OK",1000);
 		printf("%s\r\n","[ESP8266_Init]EXIT CIPMODE.");
 }
 
@@ -78,27 +78,21 @@ void GetSendBuf(void)
 **/
 void SendCmd(char* cmd, char* result, int timeOut)
 {
-		int32 count=0;
-	
     while(1)
     {
         memset(usart2_rcv_buf,0,sizeof(usart2_rcv_buf));
 				usart2_rcv_len=0;
-						
-        usart2_write(USART2,(uint8_t *)cmd,strlen(cmd));
-        //mDelay(timeOut);	
-				for(count=0;count<timeOut;count++)
-				{
-						mDelay(100);
-						if((NULL != strstr((const char *)usart2_rcv_buf, (const char *)result)))
-						{
-								return;
-						}
-				}		
-        if(count>=timeOut)
-				{
-						return;
-				}
+        usart2_write(USART2, (unsigned char *)cmd, strlen((const char *)cmd));
+        mDelay(timeOut);
+       
+        if((NULL != strstr((const char *)usart2_rcv_buf, result)))	//判断是否有预期的结果
+        {
+            break;
+        }
+        else
+        {
+            mDelay(100);
+        }
     }
 }
 
