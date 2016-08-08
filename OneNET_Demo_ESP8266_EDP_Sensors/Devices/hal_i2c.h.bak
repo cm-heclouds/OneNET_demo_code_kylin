@@ -66,13 +66,13 @@ int8_t Hal_I2C_MutiRead(I2C_TypeDef* I2Cx,uint8_t* buf, uint8_t i2c_slave_addr, 
 //#define STM32_PHER_I2C1
 
 #ifdef STM32_PHER_I2C2
-#define STM32_PHER_I2C2_SDA GPIO_Pin_11
-#define STM32_PHER_I2C2_SCL GPIO_Pin_10
+#define STM32_PHER_I2C2_SDA GPIO_Pin_10
+#define STM32_PHER_I2C2_SDL GPIO_Pin_11
 #endif 
 
 #ifdef STM32_PHER_I2C1
-#define STM32_PHER_I2C1_SDA GPIO_Pin_11
-#define STM32_PHER_I2C1_SCL GPIO_Pin_10
+#define STM32_PHER_I2C1_SDA GPIO_Pin_10
+#define STM32_PHER_I2C1_SDL GPIO_Pin_11
 #endif
 #endif /* __I2C_EE_H */
 
