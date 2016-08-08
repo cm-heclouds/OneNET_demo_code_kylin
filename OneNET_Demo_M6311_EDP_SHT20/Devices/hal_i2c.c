@@ -23,7 +23,7 @@ void GPIO_I2C_Configuration(I2C_TypeDef* I2Cx)
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 
-        GPIO_I2C1_InitStructure.GPIO_Pin =  STM32_PHER_I2C1_SDA | STM32_PHER_I2C1_SDL;
+        GPIO_I2C1_InitStructure.GPIO_Pin =  STM32_PHER_I2C1_SDA | STM32_PHER_I2C1_SCL;
         GPIO_I2C1_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_I2C1_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;
         GPIO_Init(GPIOB, &GPIO_I2C1_InitStructure);
@@ -37,7 +37,7 @@ void GPIO_I2C_Configuration(I2C_TypeDef* I2Cx)
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
         printf("%s %d\n", __func__, __LINE__);
-        GPIO_I2C2_InitStructure.GPIO_Pin =  STM32_PHER_I2C2_SDA | STM32_PHER_I2C2_SDL;
+        GPIO_I2C2_InitStructure.GPIO_Pin =  STM32_PHER_I2C2_SDA | STM32_PHER_I2C2_SCL;
         GPIO_I2C2_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_I2C2_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;
         GPIO_Init(GPIOB, &GPIO_I2C2_InitStructure);
